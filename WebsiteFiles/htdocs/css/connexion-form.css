@@ -1,0 +1,39 @@
+.form-container {
+  margin-top: 200px;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: #6cc8e9;
+
+  padding: 75px;
+}
+
+.email-title,
+.password-title {
+  padding-bottom: 10px;
+  font-family: Calibri, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.email-input,
+.password-input {
+  border: 3px solid green;
+  height: 40px;
+
+  padding-left: 10px;
+}
+
+.submit-button {
+  height: 50px;
+  background-color: green;
+  color: yellowgreen;
+  border: none;
+}
+
+.error-message {
+  color: rgb(148, 2, 2);
+  font-family: Calibri, Helvetica, sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}

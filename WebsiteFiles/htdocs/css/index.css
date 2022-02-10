@@ -1,0 +1,291 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: "Poppins", Calibri, Helvetica, sans-serif;
+}
+
+/*         End of CSS RESET         */
+
+body,
+button {
+    font-family: "Poppins", Calibri, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ededed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_container_main_content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.main_content_hashtag {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: #22271c;
+}
+
+.main_content_title {
+    font-size: 6vw;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: #22271c;
+}
+
+.main_content_description {
+    width: 80%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #777a73;
+}
+
+.main_content_btn_container {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_content_cart_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    background-color: #588535;
+    border-radius: 10px 0px 10px 0px;
+    font-weight: normal;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.main_content_more_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 10px 0px 10px 0px;
+    font-weight: normal;
+    color: #588535;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.main_container_graphics_container {
+    width: 100%;
+}
+
+.graphics_images_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38vw;
+    height: 38vw;
+}
+
+.graphics_item_background {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.graphics_item_plant {
+    width: 90%;
+    position: inherit;
+    padding: 0px 20px 10vw 0px;
+}
+
+.graphics_images_block_container {
+    position: absolute;
+    margin: 100px 4vw 0px 0px;
+    width: 45vw;
+    right: 0;
+}
+
+.graphics_label_container {
+    width: 20vw;
+    height: 5vw;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    padding: 1vw;
+    margin-right: 30vw;
+
+    margin-top: 23vw;
+
+    display: flex;
+    align-items: center;
+}
+
+.graphics_label_premium_icon {
+    width: 5vw;
+}
+
+.graphics_label_text_container {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+}
+
+.graphics_label_title {
+    font-size: 1.3vw;
+    font-weight: bold;
+}
+
+.graphics_label_description {
+    font-size: 1.1vw;
+    color: #777a73;
+}

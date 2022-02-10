@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 125px;
+}
+
+.icons-container img {
+    margin-left: 22px;
+}
+
+.pages-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.pages-button-container a {
+    margin: 200px 0px 200px 0px;
+    font-family: Calibri, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.normal-page-btn {
+    color: #989897;
+}
+
+.selected-page-btn {
+    color: #589440;
+}
+
+.icons-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.icons-container img {
+    filter: invert(18%) sepia(41%) saturate(771%) hue-rotate(45deg)
+        brightness(95%) contrast(97%);
+}

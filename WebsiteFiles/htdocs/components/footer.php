@@ -1,4 +1,4 @@
 
 <footer>
-    <p>Copyright Adam POMPOSELLI 2021</p>
+    <p>Copyright Adam POMPOSELLI - Tom VIRARD 2022</p>
 </footer>

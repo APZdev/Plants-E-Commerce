@@ -1,11 +1,13 @@
 <div class='navbar'>
     <div>
-        <img width="90px" height="90px" src="../graphics/img/logo.png" alt="plant-logo">
+        <a href="../pages/index.php">
+            <img width="90px" height="90px" src="../graphics/img/logo.png" alt="plant-logo">
+        </a>
     </div>
     <div class="pages-button-container">
-        <a class="page-btn selected" href="../pages/index.php">Home</a>
-        <a class="page-btn" href="../pages/login.php">About Us</a>
-        <a class="page-btn" href="../pages/login.php">Products</a>
+        <a class="page-btn" href="../pages/login.php">Shop</a>
+        <a class="page-btn" href="../pages/login.php">Events</a>
+        <a class="page-btn" href="../pages/login.php">Forum</a>
         <a class="page-btn" href="../pages/login.php">Contact Us</a>
     </div>
     <div class="icons-container">

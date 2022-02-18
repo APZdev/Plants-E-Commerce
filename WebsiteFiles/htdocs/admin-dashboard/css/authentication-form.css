@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, Helvetica, sans-serif;
+}
+
+textarea,
+input {
+    outline: none;
+}
+
+body > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-container {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: #588535;
+    border-radius: 12px;
+
+    padding: 60px 60px;
+}
+
+.form-container > p {
+    margin-bottom: 10px;
+}
+
+.form-container > input {
+    margin-bottom: 30px;
+}
+
+.form-container-title {
+    align-self: center;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.email-title,
+.password-title {
+    font-family: Calibri, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.email-input,
+.password-input {
+    border: none;
+    border-radius: 12px;
+    height: 55px;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    padding-left: 25px;
+}
+
+.submit-button {
+    margin-top: 20px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 12px;
+    color: #588535;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    transition: transform 0.1s linear;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    transform: scale(1.025, 1.075);
+}
+
+.error-message {
+    color: rgba(255, 0, 0, 0.7);
+    font-family: Calibri, Helvetica, sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}

@@ -4,13 +4,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home</title>
 
-        <link rel="stylesheet" href="../css/index.css">
-        <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="../css/footer.css">
-        <script src="../js/index.js" defer></script>
+        <link rel="stylesheet" href="./website/css/index.css">
+        <link rel="stylesheet" href="./website/css/header.css">
+        <link rel="stylesheet" href="./website/css/footer.css">
+        <script src="./website/js/index.js" defer></script>
     </head>
     <body>
-        <?php include '../components/header.php'; ?>
+        <?php include './website/components/header.php'; ?>
         <main class="main_container">
             <div class="main_container_presentation">
                 <div class="main_container_main_content">
@@ -25,12 +25,12 @@
                 <div class="main_container_graphics_container">
                     <div class="graphics_images_block_container">
                         <div class="graphics_images_container">
-                            <img class="graphics_item_background" src="../graphics/img/ring-bg.png" alt="plant_image">
-                            <img class="graphics_item_plant" src="../graphics/img/plant1.png" alt="plant_image">
+                            <img class="graphics_item_background" src="./website/graphics/img/ring-bg.png" alt="plant_image">
+                            <img class="graphics_item_plant" src="./website/graphics/img/plant1.png" alt="plant_image">
                         </div>
                     </div>
                     <div class="graphics_label_container">
-                        <img class="graphics_label_premium_icon" src="../graphics/img/premium-icon.png" alt="premium_icon">
+                        <img class="graphics_label_premium_icon" src="./website/graphics/img/premium-icon.png" alt="premium_icon">
                         <div class="graphics_label_text_container">
                             <h2 class="graphics_label_title">Best Sell IndoorPlant</h2>
                             <p class="graphics_label_description">Lorem ipsum dolor sit amet, consectetur.</p>
@@ -49,7 +49,7 @@
                         echo 
                         '                
                         <div class="card_item'.$isSpecial.'">
-                            <img class="card_item_image'.$isSpecial.'" src="../graphics/img/plant'.(4 + $i).'.png" alt="plant_image">
+                            <img class="card_item_image'.$isSpecial.'" src="./website/graphics/img/plant'.(4 + $i).'.png" alt="plant_image">
                             <div class="card_item_info_container'.$isSpecial.'">
                                 <h3 class="card_item_title'.$isSpecial.'">'.$map[1].'</h3>
                                 <p class="card_item_description'.$isSpecial.'">'.$map[2].'</p>

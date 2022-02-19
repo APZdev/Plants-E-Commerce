@@ -3,10 +3,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home</title>
-
+        
+        <link rel="stylesheet" href="./website/css/reset.css">
         <link rel="stylesheet" href="./website/css/index.css">
         <link rel="stylesheet" href="./website/css/header.css">
         <link rel="stylesheet" href="./website/css/footer.css">
+        <link rel="stylesheet" href="./website/css/all.css">
+
         <script src="./website/js/index.js" defer></script>
     </head>
     <body>
@@ -18,8 +21,8 @@
                     <h1 class="main_content_title">Various Indoor Plant Shop</h1>
                     <p class="main_content_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur aliquam felis sed auctor.</p>
                     <div class="main_content_btn_container">
-                        <button class="main_content_cart_btn">Add To Cart</button>
-                        <button class="main_content_more_btn">Learn More</button>
+                        <button class="main_content_btn cart_btn">Add To Cart</button>
+                        <button class="main_content_btn more_btn">Learn More</button>
                     </div>
                 </div>
                 <div class="main_container_graphics_container">

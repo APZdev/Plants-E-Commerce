@@ -1,0 +1,6 @@
+.product_main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

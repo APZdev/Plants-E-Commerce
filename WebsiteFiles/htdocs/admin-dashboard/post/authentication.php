@@ -15,13 +15,22 @@
 
         $result = $db->con->query($query);
 
+        session_start();
         if($result->num_rows == 1)
         {
             //Redirect to admin pannel
+            $_SESSION['adminLoggedInToTropicalInterior.shop'] = true;
+            $_SESSION['email'] = $email;
+            header('Location: ./../dashboard.php?page=product-panel');
+            exit;
         }
         else
         {
-            header('Location: ./../login.php?message=Incorrect credentials.&email=' . $email . '');
+            //Reset session details on wrong credentials
+            $_SESSION['adminLoggedInToTropicalInterior.shop'] = false;
+            $_SESSION['email'] = "";
+            header('Location: ./../login.php?message=Incorrect email or password.&email=' . $email . '');
+            exit;
         }
 
 

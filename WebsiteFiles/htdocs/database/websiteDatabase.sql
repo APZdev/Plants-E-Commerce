@@ -30,10 +30,10 @@ CREATE TABLE image(
    PRIMARY KEY(image_id)
 );
 
-CREATE TABLE tva(
-   tva_id INT AUTO_INCREMENT,
+CREATE TABLE tax(
+   tax_id INT AUTO_INCREMENT,
    rate DECIMAL(15,2)   NOT NULL,
-   PRIMARY KEY(tva_id)
+   PRIMARY KEY(tax_id)
 );
 
 CREATE TABLE admin_user(
@@ -88,11 +88,11 @@ CREATE TABLE product(
    long_description VARCHAR(500)  NOT NULL,
    price_excl_tax DECIMAL(15,2)   NOT NULL,
    stock_quantity INT NOT NULL,
-   tva_id INT NOT NULL,
+   tax_id INT NOT NULL,
    image_id INT NOT NULL,
    category_id INT NOT NULL,
    PRIMARY KEY(product_id),
-   FOREIGN KEY(tva_id) REFERENCES tva(tva_id),
+   FOREIGN KEY(tax_id) REFERENCES tax(tax_id),
    FOREIGN KEY(image_id) REFERENCES image(image_id),
    FOREIGN KEY(category_id) REFERENCES category(category_id)
 );

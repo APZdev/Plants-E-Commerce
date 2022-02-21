@@ -1,5 +1,4 @@
 <?php 
-
     function debug_to_console($data) {
         $output = $data;
         if (is_array($output))
@@ -11,4 +10,6 @@
     require(__DIR__."/database/DBController.php");
     $db = new DBController();
 
+    require(__DIR__."/database/CustomRequest.php");
+    $customRequest = new CustomRequest($db);
 ?>

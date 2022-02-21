@@ -1,10 +1,19 @@
+<?php require_once('./../utilities.php') ?>
 <html> 
     <head>
         <title>Admin Login</title>
-        <link rel="stylesheet" href="/admin-dashboard/css/authentication-form.css">
+        <link rel="stylesheet" href="/admin-dashboard/css/authentication.css">
     </head>
     <body>
         <div>
+            <?php 
+                //Destroy session if admin clicked logout button in the dashboard
+                if(isset($_GET['session']) && $_GET['session'] == 'logout') 
+                {
+                    session_start();
+                    session_destroy(); 
+                }
+            ?>
             <form class="form-container" action="/admin-dashboard/post/authentication.php" method="post">
                 <h1 class="form-container-title">Admin Dashboard</h1>
                 <p class="email-title">Email</p>

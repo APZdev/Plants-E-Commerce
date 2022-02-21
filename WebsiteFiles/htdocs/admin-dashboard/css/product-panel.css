@@ -1,6 +1,234 @@
 .product_main_container {
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.form_container_title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #588535;
+}
+
+.info_title {
+    color: #588535;
+}
+
+/* ----- Add Product Section ----- */
+
+.add_product_section_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.add_product_form_container {
+    background-color: rgba(88, 133, 53, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.add_product_form_container > * {
+    margin-bottom: 10px;
+}
+
+.add_product_image_selector_container {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #9da3a8;
+    border-radius: 8px;
+    position: relative;
+}
+
+#image_selector {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+#image_selector:hover {
+    cursor: pointer;
+}
+
+#product_selected_image {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border: none;
+}
+
+.add_product_info_input {
+    width: 300px;
+    height: 40px;
+    border: 2px solid #9da3a8;
+    background-color: #f8fff5;
+    border-radius: 8px;
+    font-weight: 600;
+    padding-left: 15px;
+}
+
+.add_product_add_button {
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    background-color: #588535;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.add_product_success_upload_message {
+    margin-top: 10px;
+    color: #588535;
+}
+
+/* ----- Modify Product Section ----- */
+
+.modify_product_section_container {
+    background-color: rgba(88, 133, 53, 0.1);
+    padding: 40px;
+    border-radius: 22px;
+}
+
+.modify_product_form_container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.item_foreground {
+    width: 100%;
+    border-radius: 16px;
+    background-color: #dfe8d7;
+    padding: 40px;
+    z-index: 5;
+    transition: 0.3s;
+}
+
+.modify_product_form_container:hover .item_foreground {
+    width: calc(100% - 175px);
+    border-radius: 22px;
+}
+
+.item_background {
+    position: absolute;
+    height: 100%;
+    right: 0;
+
+    border-radius: 22px 22px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 40px;
+    background-color: rgba(88, 133, 53, 1);
+    transition: width 0.3s;
+}
+
+.modify_product_form_container:hover .item_background {
+    width: 175px;
+}
+
+.modify_product_modify_button,
+.modify_product_delete_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px 0px 10px 80px;
+    width: 50px;
+    height: 50px;
+}
+
+.button_icon {
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
+    position: absolute;
+    color: #fff;
+    font-size: 1.5rem;
+    pointer-events: none;
+
+    transition: 0.1s;
+}
+
+.modify_product_modify_button:hover .button_icon {
+    font-size: 1.8rem;
+}
+
+.modify_product_modify_button:hover .delete {
+    color: red;
+}
+
+.modify_product_modify_button:hover .modify {
+    color: rgb(146, 219, 90);
+}
+
+.modify_product_modify_button input {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: rgba(88, 133, 53, 1);
+}
+
+.modify_product_info_title {
+    color: #588535;
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.modify_product_info_content {
+}
+
+.img_name_category_shortdesc_container {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.modify_product_product_image_container {
+    max-width: 150px;
+    max-height: 150px;
+    margin-right: 20px;
+}
+
+.modify_product_product_image {
+    width: 100%;
+    height: 100%;
+}
+
+.name_category_shortdesc_container {
+    display: flex;
+}
+
+.name_category_container {
+    margin-right: 75px;
+}
+
+.name_container {
+    margin-bottom: 40px;
+}
+
+.longdesc_container {
+    margin-bottom: 40px;
+}
+
+.excltaxprice_stock_tax_container {
+    display: flex;
+    margin-right: 50px;
+}
+
+.excltaxprice_stock_tax_container > * {
+    margin-right: 75px;
 }

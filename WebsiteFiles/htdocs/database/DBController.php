@@ -5,7 +5,7 @@ class DBController
     //Properties
     protected $host = 'localhost';
     protected $user = 'root';
-    protected $pwd = '';
+    protected $pwd = '95ATfgkqw5Ug';
     protected $database = 'tropicalinterior';
 
     public $con = null;

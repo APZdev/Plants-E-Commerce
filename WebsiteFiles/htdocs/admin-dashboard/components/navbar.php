@@ -38,7 +38,7 @@
             </div>
         </a>
     </div>
-    <a class="exit_button" href="/admin-dashboard/login.php">
+    <a class="exit_button" href="/admin-dashboard/login.php?session=logout">
         <i class="exit_icon far fa-sign-out-alt"></i>
     </a>
 </div>

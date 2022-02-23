@@ -21,7 +21,7 @@
             <input class="add_product_info_input" type="text" name="tax">
             <p class="info_title">Category</p>
             <input class="add_product_info_input" type="text" name="category"><br>
-            <input class="add_product_add_button" type="submit" name="add-product" value="Add Product">
+            <input class="add_product_add_button" type="submit" name="add_product" value="Add Product">
             <?php 
                 if(isset($_GET['result']) && !empty($_GET['result']) && $_GET['result'] == "success")
                     echo '<h3 class="add_product_success_upload_message"> Successfully added product. </h3>';
@@ -31,10 +31,11 @@
     <div class="modify_product_section_container">
         <h1 class="form_container_title">Modify Product</h1>
         <?php 
-            $products = $customRequest->getData("SELECT p.name, p.short_description, p.long_description, p.price_excl_tax AS price, p.stock_quantity AS stock, t.rate AS tax, i.url AS image_url, c.name AS category
-                                                 FROM product p 
-                                                 LEFT JOIN (tax t CROSS JOIN image i CROSS JOIN  category c) ON (p.tax_id = t.tax_id AND p.image_id = i.image_id AND p.category_id = c.category_id);
-                                                ");
+            $products = $customRequest->getData(
+                "SELECT p.product_id, p.name, p.short_description, p.long_description, p.price_excl_tax AS price, p.stock_quantity AS stock, t.rate AS tax, i.url AS image_url, c.name AS category
+                 FROM product p 
+                 LEFT JOIN (tax t CROSS JOIN image i CROSS JOIN  category c) ON (p.tax_id = t.tax_id AND p.image_id = i.image_id AND p.category_id = c.category_id);
+                 ");
         ?>
         <?php foreach($products as $item) {?>
         <div class="modify_product_form_container">
@@ -80,13 +81,13 @@
                 </div>
             </div>
             <div class="item_background">
-                <div class="modify_product_modify_button">
+                <div class="modify_product_button">
                     <i class="button_icon modify far fa-pen"></i>
-                    <input type="submit" name="modify-product" value="">
+                    <button class="modify_product" value="">
                 </div>
-                <div class="modify_product_modify_button">
+                <div class="modify_product_button">
                     <i class="button_icon delete far fa-trash-alt"></i>
-                    <input type="submit" name="delete-product" value="">
+                    <button class="delete_product" data-id="<?php echo $item['product_id'] ?>" value="">
                 </div>
             </div>
         </div>

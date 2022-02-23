@@ -1,9 +1,10 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
-        if($_POST["add-product"])
+        require_once('./../../utilities.php');
+
+        if(isset($_POST["add_product"]) && $_POST["add_product"])
         {
-            require_once('./../../utilities.php');
             
             $name = $_POST["name"];
             $shortDesc = $_POST["shortdesc"];
@@ -72,12 +73,21 @@
                 }
             }
     
-            $query = "INSERT INTO tax (rate) VALUES ({$tax});
-                      INSERT INTO image (url) VALUES ('". $finalFileDestination ."');
-                      INSERT INTO category (name, description) VALUES ('". $category ."', 'Category description');
-                      INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
-                          VALUES('". $name ."', '". $shortDesc ."', '". $longDesc ."', '". $exclTaxPrice ."', '". $stock ."', LAST_INSERT_ID(), LAST_INSERT_ID(), LAST_INSERT_ID());";
-    
+            $query = 
+            "
+            INSERT INTO tropicalinterior.tax (rate) VALUES ({$tax});
+            SET @rate_id = LAST_INSERT_ID();
+
+            INSERT INTO tropicalinterior.image (url) VALUES ('". $finalFileDestination ."');
+            SET @image_id = LAST_INSERT_ID();
+
+            INSERT INTO tropicalinterior.category (name, description) VALUES ('". $category ."', 'Category description');
+            SET @category_id = LAST_INSERT_ID();
+
+            INSERT INTO tropicalinterior.product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
+                VALUES('". $name ."', '". $shortDesc ."', '". $longDesc ."', {$exclTaxPrice} , {$stock}, @rate_id, @image_id, @category_id);
+            ";
+
             $result = $db->con->multi_query($query);
             
             if ($result) {
@@ -96,13 +106,40 @@
             //!empty($email)
             */
         }
-        else if($_POST["modify-product"])
+        else if(isset($_POST["modify_product"]) && $_POST["modify_product"])
         {
 
         }
-        else if($_POST["delete-product"])
+        else if(isset($_POST["delete_product"]) && $_POST["delete_product"])
         {
+            debug_to_console("here");
+            $productid = $_POST['productid'];
+            debug_to_console($productid);
 
+            $query = "DELETE FROM product WHERE product_id={$productid}";
+
+            $result = $db->con->query($query);
+            
+            if ($result) {
+                header('Location: /admin-dashboard/dashboard.php?page=product-panel&result=success');
+            }
+        }
+        else if(isset($_POST["delete_product_modal"]) && $_POST["delete_product_modal"])
+        {
+            $productid = $_POST['productid'];
+
+            $query = "SELECT name FROM product WHERE product_id={$productid};";
+    
+            $result = $db->con->query($query);
+            
+            if ($result) {
+    
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    $name = $row['name'];
+                    echo "Are you sure you want to <strong>REMOVE</strong> '{$name}' from the store ?";
+                }
+            }
         }
     }
 ?>

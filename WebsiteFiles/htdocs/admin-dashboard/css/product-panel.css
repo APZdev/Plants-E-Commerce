@@ -94,6 +94,7 @@
     background-color: rgba(88, 133, 53, 0.1);
     padding: 40px;
     border-radius: 22px;
+    z-index: 2;
 }
 
 .modify_product_form_container {
@@ -101,25 +102,30 @@
     justify-content: space-between;
     position: relative;
     margin-bottom: 40px;
+    width: 50vw;
+    min-height: 40vh;
 }
 
 .item_foreground {
+    position: absolute;
     width: 100%;
+    height: 100%;
     border-radius: 16px;
     background-color: #dfe8d7;
-    padding: 40px;
-    z-index: 5;
-    transition: 0.3s;
+    padding: 2em 8em 2em 2em;
+    z-index: 1;
+    transition: width 0.3s;
 }
 
 .modify_product_form_container:hover .item_foreground {
-    width: calc(100% - 175px);
+    width: 85%;
     border-radius: 22px;
 }
 
 .item_background {
     position: absolute;
     height: 100%;
+    width: 5%;
     right: 0;
 
     border-radius: 22px 22px 22px 22px;
@@ -128,22 +134,21 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    width: 40px;
     background-color: rgba(88, 133, 53, 1);
     transition: width 0.3s;
 }
 
 .modify_product_form_container:hover .item_background {
-    width: 175px;
+    width: 20%;
 }
 
-.modify_product_modify_button,
+.modify_product_button,
 .modify_product_delete_button {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 10px 0px 10px 80px;
+    margin: 10px 0px 10px 30%;
     width: 50px;
     height: 50px;
 }
@@ -162,19 +167,19 @@
     transition: 0.1s;
 }
 
-.modify_product_modify_button:hover .button_icon {
+.modify_product_button:hover .button_icon {
     font-size: 1.8rem;
 }
 
-.modify_product_modify_button:hover .delete {
+.modify_product_button:hover .delete {
     color: red;
 }
 
-.modify_product_modify_button:hover .modify {
+.modify_product_button:hover .modify {
     color: rgb(146, 219, 90);
 }
 
-.modify_product_modify_button input {
+.modify_product_button button {
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -189,15 +194,14 @@
     white-space: nowrap;
 }
 
-.modify_product_info_content {
-}
-
 .img_name_category_shortdesc_container {
     display: flex;
     margin-bottom: 40px;
 }
 
 .modify_product_product_image_container {
+    min-width: 150px;
+    min-height: 150px;
     max-width: 150px;
     max-height: 150px;
     margin-right: 20px;

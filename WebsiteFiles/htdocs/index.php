@@ -1,84 +1,51 @@
+<?php require_once('utilities.php') ?>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home</title>
         
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
         <link rel="stylesheet" href="./website/css/reset.css">
-        <link rel="stylesheet" href="./website/css/index.css">
-        <link rel="stylesheet" href="./website/css/header.css">
-        <link rel="stylesheet" href="./website/css/footer.css">
         <link rel="stylesheet" href="./website/css/all.css">
+        <link rel="stylesheet" href="./website/css/navbar.css">
+        <link rel="stylesheet" href="./website/css/authentication-modal.css">
+        <link rel="stylesheet" href="./website/css/index.css">
+        <link rel="stylesheet" href="./website/css/home.css">
+        <link rel="stylesheet" href="./website/css/footer.css">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
         <script src="./website/js/index.js" defer></script>
     </head>
     <body>
-        <?php include './website/components/header.php'; ?>
-        <main class="main_container">
-            <div class="main_container_presentation">
-                <div class="main_container_main_content">
-                    <h2 class="main_content_hashtag">#ORNAMENTAL PLANT</h2>
-                    <h1 class="main_content_title">Various Indoor Plant Shop</h1>
-                    <p class="main_content_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur aliquam felis sed auctor.</p>
-                    <div class="main_content_btn_container">
-                        <button class="main_content_btn cart_btn">Add To Cart</button>
-                        <button class="main_content_btn more_btn">Learn More</button>
-                    </div>
-                </div>
-                <div class="main_container_graphics_container">
-                    <div class="graphics_images_block_container">
-                        <div class="graphics_images_container">
-                            <img class="graphics_item_background" src="./website/graphics/img/ring-bg.png" alt="plant_image">
-                            <img class="graphics_item_plant" src="./website/graphics/img/plant1.png" alt="plant_image">
-                        </div>
-                    </div>
-                    <div class="graphics_label_container">
-                        <img class="graphics_label_premium_icon" src="./website/graphics/img/premium-icon.png" alt="premium_icon">
-                        <div class="graphics_label_text_container">
-                            <h2 class="graphics_label_title">Best Sell IndoorPlant</h2>
-                            <p class="graphics_label_description">Lorem ipsum dolor sit amet, consectetur.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="products_container">
-                <?php
-                    $map = ['foo', 'Severin Candrian', 'Lorem Ipsum is simply dummy text.', 59.99];
-
-                    for ($i = 0; $i < 4 ; $i++) {
-                        $isSpecial = $i == 0 ? " special" : "";
-                        $addButton = $i == 0 ? '<button class="card_item_add_button">Add to Cart</button>' : "";
-
-                        echo 
-                        '                
-                        <div class="card_item'.$isSpecial.'">
-                            <img class="card_item_image'.$isSpecial.'" src="./website/graphics/img/plant'.(4 + $i).'.png" alt="plant_image">
-                            <div class="card_item_info_container'.$isSpecial.'">
-                                <h3 class="card_item_title'.$isSpecial.'">'.$map[1].'</h3>
-                                <p class="card_item_description'.$isSpecial.'">'.$map[2].'</p>
-                                <h2 class="card_item_price'.$isSpecial.'">$'.$map[3].'</h2>
-                                '.$addButton.'
-                            </div>
-                        </div>
-                        ';
-                    }
-                ?>
-            </div>
+        <header>
+            <?php include './website/components/navbar.php'; ?>
+            <?php include './website/components/authentication-modal.php'; ?>
+        </header>
+        <main>
+            <?php
+                //Update content based on current page
+                if(isset($_GET['page']))
+                {
+                    if($_GET['page'] == "home")
+                        include('./website/pages/home.php');
+                    else if($_GET['page'] == "shop")
+                        include('./website/pages/shop.php');
+                    else if($_GET['page'] == "events")
+                        include('./website/pages/events.php');
+                    else if($_GET['page'] == "forum")
+                        include('./website/pages/forum.php');
+                    else if($_GET['page'] == "contact-us")
+                        include('./website/pages/contact-us.php');
+                }
+            ?>
         </main>
-        <!-- 
-            <?php 
-            if(!isset($_COOKIE['email'])) {
-                //Email not set
-                echo '<h1 class="welcome-title">Contenu non disponible</h1>';
-            }
-            else
-            {
-                echo '<h2 class="welcome-title">Logged in with ';
-                echo $_COOKIE["email"];
-                echo '</h2>';
-                echo '<h1 class="welcome-title">Contenu privé</h1>';
-            }
-        ?> 
-        -->
+        <footer>
+            <?php include './website/components/footer.php'; ?>
+        </footer>
     </body>
  </html>

@@ -1,6 +1,7 @@
 <div class="product_main_container">
     <div class="add_product_section_container">
-        <form class="add_product_form_container" runat="server" action="/admin-dashboard/post/product-post.php" method="post" enctype="multipart/form-data">
+        <form class="add_product_form_container" runat="server" action="/admin-dashboard/post/product-post.php"
+            method="post" enctype="multipart/form-data">
             <h1 class="form_container_title">Add product</h1>
             <p class="info_title">Image</p>
             <div class="add_product_image_selector_container">
@@ -42,7 +43,8 @@
             <div class="item_foreground">
                 <div class="img_name_category_shortdesc_container">
                     <div class="modify_product_product_image_container">
-                        <img class="modify_product_product_image" src="<?php echo $item['image_url'] ?>" alt="your image" />
+                        <img class="modify_product_product_image" src="<?php echo $item['image_url'] ?>"
+                            alt="your image" />
                     </div>
                     <div class="name_category_shortdesc_container">
                         <div class="name_category_container">
@@ -83,7 +85,7 @@
             <div class="item_background">
                 <div class="modify_product_button">
                     <i class="button_icon modify far fa-pen"></i>
-                    <button class="modify_product" value="">
+                    <button class="modify_product" data-id="<?php echo $item['product_id'] ?>" value="">
                 </div>
                 <div class="modify_product_button">
                     <i class="button_icon delete far fa-trash-alt"></i>

@@ -1,3 +1,7 @@
+.hide {
+    display: none !important;
+}
+
 .main_content {
     margin-left: 22vw;
     padding: 50px 0px 50px 0px;
@@ -7,7 +11,7 @@
     position: absolute;
 }
 
-.delete_product_modal {
+.product_modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,13 +25,14 @@
     transition: opacity 0.25s, backdrop-filter 0.25s;
 }
 
-.delete_product_modal.closed {
+.product_modal.closed {
     opacity: 0;
     backdrop-filter: blur(0px);
     pointer-events: none;
 }
 
-.modal_content_container {
+.delete_product_modal_content_container,
+.modify_product_modal_content_container {
     padding: 50px 30px;
     display: flex;
     justify-content: space-between;
@@ -47,6 +52,26 @@
     width: 90%;
 }
 
+.modal_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modify_product_modal_container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.modify_product_modal_container p {
+    margin-bottom: 10px;
+}
+
+.modify_product_modal_container input {
+    margin-bottom: 20px;
+}
+
 .modal_button_container {
     display: flex;
     width: 100%;
@@ -54,12 +79,14 @@
 }
 
 .close_modal_btn,
-.delete_product_btn {
+.delete_product_btn,
+.modify_product_btn {
     padding: 15px;
     border-radius: 12px;
 }
 
-.delete_product_btn {
+.delete_product_btn,
+.modify_product_btn {
     background-color: red;
     font-weight: bold;
     color: #fff;
@@ -67,9 +94,11 @@
     transition: transform 0.2s;
 }
 
-.delete_product_btn:hover {
-    transform: scale(1.05);
+.modify_product_btn {
+    background-color: #588535;
 }
 
-.close_modal_btn {
+.delete_product_btn:hover,
+.modify_product_btn:hover {
+    transform: scale(1.05);
 }

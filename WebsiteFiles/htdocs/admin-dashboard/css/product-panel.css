@@ -69,7 +69,7 @@
     background-color: #f8fff5;
     border-radius: 8px;
     font-weight: 600;
-    padding-left: 15px;
+    padding: 0px 15px 0px 8px;
 }
 
 .add_product_add_button {
@@ -119,7 +119,7 @@
 
 .modify_product_form_container:hover .item_foreground {
     width: 85%;
-    border-radius: 22px;
+    border: 22px;
 }
 
 .item_background {

@@ -6,13 +6,13 @@ USE tropicalinterior;
 
 
 CREATE TABLE customer_address(
-   customer_address_id INT,
+   customer_address_id INT AUTO_INCREMENT,
    firstname VARCHAR(50) ,
    lastname VARCHAR(50) ,
-   city VARCHAR(50)  NOT NULL,
-   street VARCHAR(255)  NOT NULL,
-   zip_code INT NOT NULL,
-   apartment_number VARCHAR(255)  NOT NULL,
+   city VARCHAR(50) ,
+   street VARCHAR(255) ,
+   zip_code INT,
+   apartment_number VARCHAR(255) ,
    more_info VARCHAR(255) ,
    PRIMARY KEY(customer_address_id)
 );
@@ -67,16 +67,16 @@ CREATE TABLE command(
 );
 
 CREATE TABLE customer(
-   customer_id VARCHAR(50) ,
+   customer_id INT AUTO_INCREMENT,
    firstname VARCHAR(50)  NOT NULL,
    lastname VARCHAR(50)  NOT NULL,
    email VARCHAR(255)  NOT NULL,
-   password VARCHAR(32)  NOT NULL,
+   password VARCHAR(64)  NOT NULL,
    vkey VARCHAR(32)  NOT NULL,
-   verified BOOLEAN NOT NULL,
+   verified TINYINT NOT NULL,
    registration_date DATETIME NOT NULL,
-   update_date VARCHAR(50) ,
-   customer_address_id INT NOT NULL,
+   update_date VARCHAR(50)  NOT NULL,
+   customer_address_id INT,
    PRIMARY KEY(customer_id),
    FOREIGN KEY(customer_address_id) REFERENCES customer_address(customer_address_id)
 );
@@ -132,7 +132,7 @@ CREATE TABLE thread(
    thread_id INT AUTO_INCREMENT,
    title VARCHAR(50)  NOT NULL,
    type VARCHAR(100)  NOT NULL,
-   customer_id VARCHAR(50)  NOT NULL,
+   customer_id INT NOT NULL,
    PRIMARY KEY(thread_id),
    FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
 );
@@ -141,7 +141,7 @@ CREATE TABLE visit_log(
    visit_log_id INT AUTO_INCREMENT,
    location VARCHAR(50)  NOT NULL,
    created_at DATETIME NOT NULL,
-   customer_id VARCHAR(50)  NOT NULL,
+   customer_id INT NOT NULL,
    PRIMARY KEY(visit_log_id),
    FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
 );
@@ -151,7 +151,7 @@ CREATE TABLE user_comment(
    title VARCHAR(100)  NOT NULL,
    content VARCHAR(250)  NOT NULL,
    created_at DATETIME NOT NULL,
-   customer_id VARCHAR(50)  NOT NULL,
+   customer_id INT NOT NULL,
    thread_id INT NOT NULL,
    product_id INT NOT NULL,
    PRIMARY KEY(user_comment_id),
@@ -170,7 +170,7 @@ CREATE TABLE rating(
 );
 
 CREATE TABLE reserve(
-   customer_id VARCHAR(50) ,
+   customer_id INT,
    command_id INT,
    PRIMARY KEY(customer_id, command_id),
    FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
@@ -178,7 +178,7 @@ CREATE TABLE reserve(
 );
 
 CREATE TABLE subscribe(
-   customer_id VARCHAR(50) ,
+   customer_id INT,
    event_id INT,
    PRIMARY KEY(customer_id, event_id),
    FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
@@ -186,8 +186,32 @@ CREATE TABLE subscribe(
 );
 
 
+/* SETUP EXAMPLE ADMIN ACCOUNTS */
+INSERT INTO admin_user (email, password) VALUES ('admin1@localhost.fr', 'admin123');
 
-/* SETUP DEFAULT ADMIN ACCOUNTS */
+/* TODO : SETUP MULTIPLE EXAMPLE EVENTS */
 
-INSERT INTO admin_user (email, password) VALUES ('admin1@localhost.fr', 'admin123'), ('admin2@localhost.fr', 'admin123');
+
+
+/* TODO : ADD EXAMPLE PRODUCT (Even without image) */
+
+
+
+/* TODO : ADD EXAMPLE CUSTOMER ACCOUNTS */
+
+/* TODO : ADD EXAMPLE CUSTOMER VISIT LOGS */
+
+/* TODO : ADD EXAMPLE CUSTOMER THREAD */
+
+/* TODO : ADD EXAMPLE CUSTOMER COMMENT TO A THREAD */
+
+/* TODO : ADD EXAMPLE CUSTOMER COMMENT TO A PRODUCT WITH A RATING */
+
+/* TODO : ADD EXAMPLE CUSTOMER COMMENT TO A PRODUCT */
+
+/* TODO : ADD EXAMPLE CUSTOMER COMMAND RESERVATION WITH ORDERED PRODUCT 
+          WITH THEIR RESPECTIVE SHIPPING COST AND A PLANNED DELIVERY */
+
+
+
 

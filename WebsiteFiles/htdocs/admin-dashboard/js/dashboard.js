@@ -1,3 +1,6 @@
+//Reduce dom query length using a fake jquery syntax
+const $ = document.querySelector.bind(document);
+
 //Render selected image on local image import
 image_selector.onchange = (evt) => {
     const [file] = image_selector.files;
@@ -7,93 +10,114 @@ image_selector.onchange = (evt) => {
     }
 };
 
-$(document).ready(function () {
-    //Close modal on click
-    $(".close_modal_btn").click(function () {
-        $(".product_modal").addClass("closed");
+//Open product deletion modal when clicking on specific product using it's product 'id'
+const deleteButtons = document.querySelectorAll(".delete_product");
+deleteButtons.forEach((deleteButton) => {
+    deleteButton.addEventListener("click", (event) => {
+        const productid = deleteButton.dataset.id;
+        $(".delete_product_modal_content_container").classList.remove("hide");
+        $(".modify_product_modal_content_container").classList.add("hide");
+
+        let formData = new FormData();
+        formData.append("delete_product_modal", "1");
+        formData.append("productid", productid);
+
+        fetch("/admin-dashboard/post/product-post.php", {
+            method: "POST",
+            body: formData,
+        })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (body) {
+                console.log(body);
+                $(".modal_description").innerHTML = body;
+                $(".product_modal").classList.remove("closed");
+                $(".delete_product_btn").setAttribute("data-id", productid);
+            });
     });
+});
 
-    //Open product deletion modal when clicking on specific product using it's product 'id'
-    $(".delete_product").click(function () {
-        var productid = $(this).data("id");
-        $(".delete_product_modal_content_container").removeClass("hide");
-        $(".modify_product_modal_content_container").addClass("hide");
-
-        $.ajax({
-            url: "/admin-dashboard/post/product-post.php",
-            type: "post",
-            data: { delete_product_modal: 1, productid: productid },
-            success: function (response) {
-                $(".modal_description").html(response);
-                $(".product_modal").removeClass("closed");
-                $(".delete_product_btn").attr("data-id", productid);
-            },
-        });
+//Close modal on click
+const closeModal = document.querySelectorAll(".close_modal_btn");
+closeModal.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        $(".product_modal").classList.add("closed");
     });
+});
 
-    //Request deletion of a product from database
-    $(".delete_product_btn").click(function () {
-        var productid = $(this).data("id");
+//Request deletion of a product from database
+$(".delete_product_btn").addEventListener("click", (event) => {
+    const productid = $(".delete_product_btn").dataset.id;
 
-        $.ajax({
-            url: "/admin-dashboard/post/product-post.php",
-            type: "post",
-            data: { delete_product: 1, productid: productid },
-            success: function (response) {
-                $(".product_modal").addClass("closed");
-            },
-        });
+    let formData = new FormData();
+    formData.append("delete_product", "1");
+    formData.append("productid", productid);
+
+    fetch("/admin-dashboard/post/product-post.php", {
+        method: "POST",
+        body: formData,
+    }).then(function (response) {
+        $(".product_modal").classList.add("closed");
     });
+});
 
-    //Open product edit modal
-    $(".modify_product").click(function () {
-        var productid = $(this).data("id");
-        $(".delete_product_modal_content_container").addClass("hide");
-        $(".modify_product_modal_content_container").removeClass("hide");
+//Open product modification modal
+const editButtons = document.querySelectorAll(".modify_product");
+editButtons.forEach((editButton) => {
+    editButton.addEventListener("click", (event) => {
+        var productid = editButton.dataset.id;
+        $(".delete_product_modal_content_container").classList.add("hide");
+        $(".modify_product_modal_content_container").classList.remove("hide");
 
-        $.ajax({
-            url: "/admin-dashboard/post/product-post.php",
-            type: "post",
-            data: { modify_product_modal: 1, productid: productid },
-            success: function (response) {
-                $(".modal_content").html(response);
-                $(".product_modal").removeClass("closed");
-                $(".modify_product_btn").attr("data-id", productid);
-            },
-        });
+        let formData = new FormData();
+        formData.append("modify_product_modal", "1");
+        formData.append("productid", productid);
+
+        fetch("/admin-dashboard/post/product-post.php", {
+            method: "POST",
+            body: formData,
+        })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (body) {
+                $(".modal_content").innerHTML = body;
+                $(".product_modal").classList.remove("closed");
+                $(".modify_product_btn").setAttribute("data-id", productid);
+            });
     });
+});
 
-    //Request deletion of a product from database
-    $(".modify_product_btn").click(function () {
-        let productid = $(this).data("id");
-        let inputParents = $(".modify_product_modal_container");
-        let name = inputParents.children('input[name="name"]').val();
-        let shortdesc = inputParents.children('input[name="shortdesc"]').val();
-        let longdesc = inputParents.children('input[name="longdesc"]').val();
-        let excltaxprice = inputParents
-            .children('input[name="excltaxprice"]')
-            .val();
-        let stock = inputParents.children('input[name="stock"]').val();
-        let tax = inputParents.children('input[name="tax"]').val();
-        let category = inputParents.children('input[name="category"]').val();
+//Save modified prodduct info to database
+$(".modify_product_btn").addEventListener("click", (event) => {
+    const productid = $(".modify_product_btn").dataset.id;
+    const inputParents = $(".modify_product_modal_container");
+    let name = inputParents.querySelector('input[name="name"]').value;
+    let shortdesc = inputParents.querySelector('input[name="shortdesc"]').value;
+    let longdesc = inputParents.querySelector('input[name="longdesc"]').value;
+    let excltaxprice = inputParents.querySelector(
+        'input[name="excltaxprice"]'
+    ).value;
+    let stock = inputParents.querySelector('input[name="stock"]').value;
+    let tax = inputParents.querySelector('input[name="tax"]').value;
+    let category = inputParents.querySelector('input[name="category"]').value;
 
-        $.ajax({
-            url: "/admin-dashboard/post/product-post.php",
-            type: "post",
-            data: {
-                modify_product: 1,
-                productid: productid,
-                name: name,
-                shortdesc: shortdesc,
-                longdesc: longdesc,
-                excltaxprice: excltaxprice,
-                stock: stock,
-                tax: tax,
-                category: category,
-            },
-            success: function (response) {
-                $(".product_modal").addClass("closed");
-            },
-        });
+    let formData = new FormData();
+    formData.append("modify_product", "1");
+    formData.append("productid", productid);
+    formData.append("name", name);
+    formData.append("shortdesc", shortdesc);
+    formData.append("longdesc", longdesc);
+    formData.append("excltaxprice", excltaxprice);
+    formData.append("stock", stock);
+    formData.append("tax", tax);
+    formData.append("category", category);
+
+    fetch("/admin-dashboard/post/product-post.php", {
+        method: "POST",
+        body: formData,
+    }).then(function (response) {
+        $(".product_modal").classList.add("closed");
     });
 });

@@ -1,19 +1,22 @@
 <div class='navbar'>
     <?php 
         function currentPage($getName){
-            echo $_GET['page'] == $getName ? "selected" : "";
+            if(isset($_GET['page']))
+            {
+                echo $_GET['page'] == $getName ? "selected" : "";
+            }
         }
     ?>
     <div>
-        <a href="index.php?page=home">
+        <a href="/index.php?page=home">
             <img width="90px" height="90px" src="/website/graphics/img/logo.png" alt="logo">
         </a>
     </div>
     <div class="pages-button-container">
-        <a class="page-btn <?php currentPage("shop"); ?>" href="index.php?page=shop">Shop</a>
-        <a class="page-btn <?php currentPage("events"); ?>" href="index.php?page=events">Events</a>
-        <a class="page-btn <?php currentPage("forum"); ?>" href="index.php?page=forum">Forum</a>
-        <a class="page-btn <?php currentPage("contact-us"); ?>" href="index.php?page=contact-us">Contact Us</a>
+        <a class="page-btn <?php currentPage("shop"); ?>" href="/index.php?page=shop">Shop</a>
+        <a class="page-btn <?php currentPage("events"); ?>" href="/index.php?page=events">Events</a>
+        <a class="page-btn <?php currentPage("forum"); ?>" href="/index.php?page=forum">Forum</a>
+        <a class="page-btn <?php currentPage("contact-us"); ?>" href="/index.php?page=contact-us">Contact Us</a>
     </div>
     <div class="icons-container">
         <i class="far fa-search"></i>

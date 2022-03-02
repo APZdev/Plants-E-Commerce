@@ -73,25 +73,23 @@
             }
     
             $query = 
-            "INSERT INTO tropicalinterior.tax (rate) VALUES ({$tax});
+            "INSERT INTO tax (rate) VALUES ({$tax});
              SET @tax_id = LAST_INSERT_ID();
          
-             INSERT INTO tropicalinterior.image (url) VALUES ('". $finalFileDestination ."');
+             INSERT INTO image (url) VALUES ('". $finalFileDestination ."');
              SET @image_id = LAST_INSERT_ID();
          
-             INSERT INTO tropicalinterior.category (name, description) VALUES ('". $category ."', 'Category description');
+             INSERT INTO category (name, description) VALUES ('". $category ."', 'Category description');
              SET @category_id = LAST_INSERT_ID();
          
-             INSERT INTO tropicalinterior.product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
+             INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
                  VALUES('". $name ."', '". $shortDesc ."', '". $longDesc ."', {$exclTaxPrice} , {$stock}, @tax_id, @image_id, @category_id);
             ";
 
             $result = $db->con->multi_query($query);
             
-            debug_to_console("success1tees");
-
             if ($result) {
-                header('Refresh:0; url=/admin-dashboard/dashboard.php?page=product-panel&result=success');
+                header('Refresh:0.2; url=/admin-dashboard/dashboard.php?page=product-panel&result=success');
             }
             else
             {

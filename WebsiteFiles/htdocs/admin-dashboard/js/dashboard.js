@@ -1,4 +1,4 @@
-//Reduce dom query length using a fake jquery syntax
+//Reduce DOM query length using a fake jquery syntax
 const $ = document.querySelector.bind(document);
 
 //Render selected image on local image import
@@ -9,6 +9,14 @@ image_selector.onchange = (evt) => {
         product_selected_image.style.display = "block";
     }
 };
+
+//Close modal on click
+const closeModal = document.querySelectorAll(".close_modal_btn");
+closeModal.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        $(".product_modal").classList.add("closed");
+    });
+});
 
 //Open product deletion modal when clicking on specific product using it's product 'id'
 const deleteButtons = document.querySelectorAll(".delete_product");
@@ -30,19 +38,10 @@ deleteButtons.forEach((deleteButton) => {
                 return response.text();
             })
             .then(function (body) {
-                console.log(body);
                 $(".modal_description").innerHTML = body;
                 $(".product_modal").classList.remove("closed");
                 $(".delete_product_btn").setAttribute("data-id", productid);
             });
-    });
-});
-
-//Close modal on click
-const closeModal = document.querySelectorAll(".close_modal_btn");
-closeModal.forEach((button) => {
-    button.addEventListener("click", (event) => {
-        $(".product_modal").classList.add("closed");
     });
 });
 
@@ -59,6 +58,9 @@ $(".delete_product_btn").addEventListener("click", (event) => {
         body: formData,
     }).then(function (response) {
         $(".product_modal").classList.add("closed");
+        setTimeout(function () {
+            location.reload();
+        }, 200);
     });
 });
 
@@ -89,7 +91,7 @@ editButtons.forEach((editButton) => {
     });
 });
 
-//Save modified prodduct info to database
+//Save edited prodduct info to database
 $(".modify_product_btn").addEventListener("click", (event) => {
     const productid = $(".modify_product_btn").dataset.id;
     const inputParents = $(".modify_product_modal_container");
@@ -119,5 +121,8 @@ $(".modify_product_btn").addEventListener("click", (event) => {
         body: formData,
     }).then(function (response) {
         $(".product_modal").classList.add("closed");
+        setTimeout(function () {
+            location.reload();
+        }, 200);
     });
 });

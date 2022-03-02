@@ -55,8 +55,8 @@
 
             $error = $password != $confirmPassword ? 1 : 0;
 
-            $emailCheck = $db->con->query("SELECT * FROM customer WHERE email={$email} LIMIT 1");
-            $error = $emailCheck->num_rows > 0 ? 2 : 0;
+            //$emailCheck = $db->con->query("SELECT * FROM customer WHERE email={$email} LIMIT 1");
+            //$error = $emailCheck->num_rows > 0 ? 2 : 0;
 
             if($error == 1)
             {
@@ -75,9 +75,8 @@
                 
                 $password = hash('sha256', $password);
                 $query = 
-                "INSERT INTO customer_address (firstname, lastname) VALUES ('{$firstName}', '{$lastName}');
-                 INSERT INTO customer (firstname, lastname, email, password, vkey, verified, registration_date, update_date, customer_address_id) 
-                 VALUES ('{$firstName}', '{$lastName}', '{$email}', '{$password}', '{$vkey}', 0, NOW(), NOW(), LAST_INSERT_ID());";
+                "INSERT INTO customer (firstname, lastname, email, password, vkey, verified, registration_date, update_date) 
+                 VALUES ('{$firstName}', '{$lastName}', '{$email}', '{$password}', '{$vkey}', 0, NOW(), NOW());";
                 
                 $result = $db->con->multi_query($query);
                 

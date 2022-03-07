@@ -182,13 +182,16 @@
         {
             $productid = $_POST['productid'];
 
-            $query = "DELETE FROM product WHERE product_id={$productid}";
+            //Delete locally
+            $imageId = $db->con->query("SELECT image_id FROM product p WHERE product_id = {$productid};")->fetch_object()->image_id;
+            $imageUrl = $db->con->query("SELECT url FROM image WHERE image_id = {$imageId};")->fetch_object()->url;
+            unlink($imageUrl);
 
+            $query = "DELETE FROM product WHERE product_id={$productid}";
+            //Delete from db
             $result = $db->con->query($query);
 
-            if ($result) {
-                header('Refresh:0; url=/admin-dashboard/dashboard.php?page=product-panel');
-            }
+            //Refresh page in JS success .then()
         }
     }
 ?>

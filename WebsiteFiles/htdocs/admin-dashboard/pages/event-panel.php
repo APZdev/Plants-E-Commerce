@@ -1,3 +1,3 @@
 <div class="event_main_container">
-    <p>Events</p>
+    <p class="event_title">Events</p>
 </div>

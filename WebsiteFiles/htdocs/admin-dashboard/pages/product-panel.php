@@ -1,4 +1,5 @@
 <div class="product_main_container">
+    <script src="/admin-dashboard/js/product-panel.js" defer></script>
     <div class="add_product_section_container">
         <form class="add_product_form_container" runat="server" action="/admin-dashboard/post/product-post.php"
             method="post" enctype="multipart/form-data">

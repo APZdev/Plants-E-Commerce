@@ -48,10 +48,10 @@
                         include('./website/pages/events.php');
                         setTabTitle("Events");
                     }
-                    else if($_GET['page'] == "forum")
+                    else if($_GET['page'] == "thread")
                     {
-                        include('./website/pages/forum.php');
-                        setTabTitle("Forum");
+                        include('./website/pages/thread.php');
+                        setTabTitle("Threads");
                     }
                     else if($_GET['page'] == "contact-us")
                     {

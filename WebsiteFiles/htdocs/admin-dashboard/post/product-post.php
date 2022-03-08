@@ -187,9 +187,8 @@
             $imageUrl = $db->con->query("SELECT url FROM image WHERE image_id = {$imageId};")->fetch_object()->url;
             unlink($imageUrl);
 
-            $query = "DELETE FROM product WHERE product_id={$productid}";
             //Delete from db
-            $result = $db->con->query($query);
+            $result = $db->con->query("DELETE FROM product WHERE product_id={$productid};");
 
             //Refresh page in JS success .then()
         }

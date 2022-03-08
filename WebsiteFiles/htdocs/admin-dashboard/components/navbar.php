@@ -25,10 +25,10 @@
                 <h2 class="navbar_item_title">Events</h2>
             </div>
         </a>
-        <a href="/admin-dashboard/dashboard.php?page=forum-panel">
-            <div class="navbar_item <?php isNavbarButtonSelected("forum-panel"); ?>">
+        <a href="/admin-dashboard/dashboard.php?page=thread-panel">
+            <div class="navbar_item <?php isNavbarButtonSelected("thread-panel"); ?>">
                 <i class="navbar_item_image far fa-comment"></i>
-                <h2 class="navbar_item_title">Forum</h2>
+                <h2 class="navbar_item_title">Threads</h2>
             </div>
         </a>
         <a href="/admin-dashboard/dashboard.php?page=activity-panel">

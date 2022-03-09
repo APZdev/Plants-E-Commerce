@@ -18,11 +18,18 @@
         {
             $threadId = $_POST['thread_id'];
 
-            //$query = "DELETE FROM populate WHERE thread_id ={$threadId};";
-            //$query .="DELETE FROM user_comment WHERE thread_id={$userCommentId};";
-            //$query .="DELETE FROM thread WHERE thread_id={$threadId};";
+            $comments = $customRequest->getData("SELECT user_comment_id AS comment_id FROM populate WHERE thread_id={$threadId};");
+
+            //Delete all thread comment associations
+            $db->con->multi_query("DELETE FROM populate WHERE thread_id ={$threadId};");
             
-            //$result = $db->con->multi_query($query);
+            //Delete every comment from the thread
+            foreach($comments as $comment)
+            {
+                $db->con->multi_query("DELETE FROM user_comment WHERE thread_id={$comment['comment_id']};");
+            }
+
+            $db->con->multi_query("DELETE FROM thread WHERE thread_id ={$threadId};");
 
             //Refresh page in JS success .then()
         }

@@ -1,3 +1,12 @@
+//Thread card on click redirection
+const threadCards = document.querySelectorAll(".thread_item");
+threadCards.forEach((threadCard) => {
+    threadCard.addEventListener("click", (event) => {
+        const threadId = threadCard.dataset.id;
+        window.location.href = `/admin-dashboard/dashboard.php?page=thread-panel&thread_id=${threadId}`;
+    });
+});
+
 //Delete comment of a thread on click
 const deleteCommentButtons = document.querySelectorAll(".delete_comment_button");
 deleteCommentButtons.forEach((deleteButton) => {
@@ -20,6 +29,7 @@ deleteCommentButtons.forEach((deleteButton) => {
     });
 });
 
+//Delete a thread and all related comments
 const deleteThreadButtons = document.querySelectorAll(".thread_delete_button");
 deleteThreadButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
@@ -33,11 +43,10 @@ deleteThreadButtons.forEach((deleteButton) => {
                 method: "POST",
                 body: formData,
             })
-            .then(function(response) {
-                return response.text();
-            })
-            .then(function(body) {
-                console.log(body);
+            .then(() => {
+                setTimeout(function() {
+                    location.reload();
+                }, 200);
             });
     });
 });

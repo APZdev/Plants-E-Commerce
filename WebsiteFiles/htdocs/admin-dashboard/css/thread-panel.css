@@ -7,6 +7,10 @@
     border-radius: 12px;
 }
 
+.thread_item_content_container {
+    position: relative;
+}
+
 .thread_item {
     width: 70vw;
     border-radius: 16px;
@@ -194,6 +198,10 @@
     font-size: 1.8rem;
     color: #588535;
     transition: 0.3s;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1em 1em 0em 0em;
     z-index: 4;
 }
 
@@ -202,4 +210,9 @@
     transform: scale(1.1);
 }
 
-.delete_thread_button {}
+.no_comments_text {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 500;
+    color: #588535;
+}

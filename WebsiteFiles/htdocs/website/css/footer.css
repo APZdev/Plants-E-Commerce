@@ -1,13 +1,17 @@
 .footer_container {
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(#ededed, #afafaf99);
-  width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#ededed, #afafaf99);
+    width: 100%;
+}
+
+.footer_container.dark {
+    background: linear-gradient(#123530, #0b201d);
 }
 
 .footer_container p {
-  font-family: Calibri, Helvetica, sans-serif;
-  font-weight: 500;
+    font-family: Calibri, Helvetica, sans-serif;
+    font-weight: 500;
 }

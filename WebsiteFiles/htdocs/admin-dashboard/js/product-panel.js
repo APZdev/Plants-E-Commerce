@@ -66,7 +66,7 @@ $(".delete_product_btn").addEventListener("click", (event) => {
 const editButtons = document.querySelectorAll(".modify_product");
 editButtons.forEach((editButton) => {
     editButton.addEventListener("click", (event) => {
-        var productid = editButton.dataset.id;
+        let productid = editButton.dataset.id;
         $(".delete_product_modal_content_container").classList.add("hide");
         $(".modify_product_modal_content_container").classList.remove("hide");
 

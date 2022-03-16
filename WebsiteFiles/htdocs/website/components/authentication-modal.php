@@ -87,7 +87,7 @@ if(isset($_GET['authentication']))
                                 <p class="captcha_title">I'm not a robot</p>
                             </div>
                             <div class="recaptcha_logo_description_container">
-                                <img class="recaptcha_logo" src="./website/graphics/img/recaptcha-logo.png"
+                                <img class="recaptcha_logo" src="/website/graphics/img/recaptcha-logo.png"
                                     alt="re-captcha-logo" />
                                 <p class="recaptcha_description">Privacy - Terms</p>
                             </div>

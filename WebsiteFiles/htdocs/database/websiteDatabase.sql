@@ -102,8 +102,8 @@ CREATE TABLE rating(
 
 CREATE TABLE command(
    command_id INT AUTO_INCREMENT,
-   card_last_digits INT NOT NULL,
-   card_type VARCHAR(15)  NOT NULL,
+   card_last_digits SMALLINT NOT NULL,
+   card_type TINYINT NOT NULL,
    created_at DATETIME NOT NULL,
    PRIMARY KEY(command_id)
 );
@@ -145,7 +145,7 @@ CREATE TABLE product_order(
 
 CREATE TABLE delivery(
    delivery_id INT AUTO_INCREMENT,
-   delivery_date DATE NOT NULL,
+   estimated_delivery_date DATE NOT NULL,
    status VARCHAR(50)  NOT NULL,
    delivered_date DATETIME,
    command_id INT NOT NULL,
@@ -157,7 +157,7 @@ CREATE TABLE delivery(
 
 CREATE TABLE shipping_cost(
    shipping_cost_id INT AUTO_INCREMENT,
-   price DECIMAL(15,2)   NOT NULL,
+   price DECIMAL(6,2)   NOT NULL,
    product_order_id INT NOT NULL,
    PRIMARY KEY(shipping_cost_id),
    UNIQUE(product_order_id),
@@ -197,6 +197,8 @@ CREATE TABLE populate(
 );
 
 
+/* ---------------------- FILL DATABASE WITH EXAMPLE DATA ---------------------- */
+
 /* SETUP EXAMPLE ADMIN ACCOUNTS */
 INSERT INTO admin_user (email, password) VALUES ('admin1@localhost.fr', 'admin123');
 SET @admin_user_id = LAST_INSERT_ID();
@@ -216,10 +218,6 @@ INSERT INTO image (url) VALUES ('../../uploads/image/test.png');
 INSERT INTO event (type, start_time, end_time, title, description, address, admin_user_id, image_id) 
    VALUES ('Event Type 2', NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY), 'Event Title 2', 'Event Description 2', 'Event Address 2', @admin_user_id, LAST_INSERT_ID());
 
-/* ADD A CUSTOMER_ADDRESS */
-INSERT INTO customer_address (firstname, lastname, city, street, zip_code, more_info, customer_id) 
-   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', @example_customer_id);
-
 /* SUBSCRIBE A CUSTOMER TO AN EVENT */
 INSERT INTO subscribe (customer_id, event_id) VALUES (@example_customer_id, @example_event_id);
 
@@ -227,15 +225,19 @@ INSERT INTO subscribe (customer_id, event_id) VALUES (@example_customer_id, @exa
 INSERT INTO tax (rate) VALUES (20.00);
 SET @tax_id = LAST_INSERT_ID();
 
-INSERT INTO image (url) VALUES ('../../uploads/image/test.png');
+INSERT INTO image (url) VALUES ('./../../website/graphics/img/logo.png');
 SET @product_image_id = LAST_INSERT_ID();
 
 INSERT INTO category (name, description) VALUES ('Category', 'Category description');
 SET @category_id = LAST_INSERT_ID();
 
 INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
-   VALUES('Name', 'Short Description', 'Long Description', 55 , 15, @tax_id, @product_image_id, @category_id);
-SET @example_product_id = LAST_INSERT_ID();
+   VALUES('Name 1', 'Short Description 1', 'Long Description 1', 45 , 15, @tax_id, @product_image_id, @category_id);
+SET @example_product_id_1 = LAST_INSERT_ID();
+
+INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
+   VALUES('Name 2', 'Short Description 2', 'Long Description 2', 25 , 10, @tax_id, @product_image_id, @category_id);
+SET @example_product_id_2 = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER VISIT LOGS */
 INSERT INTO activity_log (action, created_at, customer_id) VALUES ('Visit : Home Page', NOW(), @example_customer_id), ('Visit : Events Page', NOW(), @example_customer_id);
@@ -256,14 +258,34 @@ SET @exmaple_user_comment_id_2 = LAST_INSERT_ID();
 
 INSERT INTO rating (score, user_comment_id) VALUES (4, @exmaple_user_comment_id_2);
 
-INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id, @exmaple_user_comment_id_2);
+INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id_1, @exmaple_user_comment_id_2);
 
 /* ADD EXAMPLE CUSTOMER COMMENT TO A PRODUCT */
 INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id);
 SET @exmaple_user_comment_id_3 = LAST_INSERT_ID();
 
-INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id, @exmaple_user_comment_id_3);
+INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id_1, @exmaple_user_comment_id_3);
 
-/* TODO : ADD EVERYTHING RELATED TO A COMMAND */
+/* ADD EXAMPLE COMMAND */
+INSERT INTO command (card_last_digits, card_type, created_at) VALUES (4726, "VISA", NOW());
+SET @example_command_id = LAST_INSERT_ID();
 
+/* ADD EXAMPLE CUSTOMER_ADDRESS */
+INSERT INTO customer_address (firstname, lastname, city, street, zip_code, more_info, customer_id) 
+   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', @example_customer_id);
+SET @example_customer_address = LAST_INSERT_ID();
 
+/* ADD EXAMPLE DELIVERY */
+INSERT INTO delivery (estimated_delivery_date, status, command_id, customer_address_id)
+   VALUES (DATE_ADD(NOW(), INTERVAL 3 DAY), "In Preparation", @example_command_id, @example_customer_address);
+
+/* ADD EXAMPLE PRODUCT ORDER */
+INSERT INTO product_order (quantity, command_id, product_id) 
+   VALUES (2, @example_command_id, @example_product_id_1), (3, @example_command_id, @example_product_id_2);
+SET @example_product_order_id = LAST_INSERT_ID();
+
+/* ADD EXAMPLE SHIPPING COST */
+INSERT INTO shipping_cost (price, product_order_id) VALUES (4.99, @example_product_order_id);
+
+/* ADD COMMAND RESERVATION BY CUSTOMER */
+INSERT INTO reserve (customer_id, command_id) VALUES (@example_customer_id, @example_command_id);

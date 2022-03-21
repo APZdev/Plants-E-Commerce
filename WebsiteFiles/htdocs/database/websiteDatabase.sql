@@ -281,7 +281,7 @@ INSERT INTO delivery (estimated_delivery_date, status, command_id, customer_addr
 
 /* ADD EXAMPLE PRODUCT ORDER */
 INSERT INTO product_order (quantity, command_id, product_id) 
-   VALUES (2, @example_command_id, @example_product_id_1), (3, @example_command_id, @example_product_id_2);
+   VALUES (2, @example_command_id, @example_product_id_1);
 SET @example_product_order_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE SHIPPING COST */

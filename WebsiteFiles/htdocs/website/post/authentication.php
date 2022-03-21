@@ -60,7 +60,7 @@
 
             if($error == 1)
             {
-                header("Location: /website/index.php?page=home&authentication=register&error=Confirmation password doesn't must be identical");
+                header("Location: /website/index.php?page=home&authentication=register&error=Confirmation password must be identical");
                 exit;
             }
             else if($error == 2)

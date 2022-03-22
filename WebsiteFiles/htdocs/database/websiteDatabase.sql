@@ -18,7 +18,7 @@ CREATE TABLE customer(
    PRIMARY KEY(customer_id)
 );
 
-CREATE TABLE customer_address(
+CREATE TABLE delivery_address(
    customer_address_id INT AUTO_INCREMENT,
    firstname VARCHAR(50) ,
    lastname VARCHAR(50) ,
@@ -26,6 +26,7 @@ CREATE TABLE customer_address(
    street VARCHAR(255) ,
    zip_code VARCHAR(15) ,
    more_info VARCHAR(255) ,
+   phone_number VARCHAR(25) ,
    customer_id INT NOT NULL,
    PRIMARY KEY(customer_address_id),
    UNIQUE(customer_id),
@@ -100,14 +101,6 @@ CREATE TABLE rating(
    FOREIGN KEY(user_comment_id) REFERENCES user_comment(user_comment_id)
 );
 
-CREATE TABLE command(
-   command_id INT AUTO_INCREMENT,
-   card_last_digits SMALLINT NOT NULL,
-   card_type TINYINT NOT NULL,
-   created_at DATETIME NOT NULL,
-   PRIMARY KEY(command_id)
-);
-
 CREATE TABLE activity_log(
    visit_log_id INT AUTO_INCREMENT,
    action VARCHAR(50)  NOT NULL,
@@ -115,6 +108,19 @@ CREATE TABLE activity_log(
    customer_id INT NOT NULL,
    PRIMARY KEY(visit_log_id),
    FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+);
+
+CREATE TABLE facturation_address(
+   facturation_address_id INT AUTO_INCREMENT,
+   firstname VARCHAR(50) ,
+   lastname VARCHAR(50) ,
+   city VARCHAR(50) ,
+   street VARCHAR(255) ,
+   zip_code VARCHAR(15) ,
+   email VARCHAR(255) ,
+   more_info VARCHAR(255) ,
+   phone_number VARCHAR(25) ,
+   PRIMARY KEY(facturation_address_id)
 );
 
 CREATE TABLE product(
@@ -133,6 +139,16 @@ CREATE TABLE product(
    FOREIGN KEY(category_id) REFERENCES category(category_id)
 );
 
+CREATE TABLE command(
+   command_id INT AUTO_INCREMENT,
+   card_last_digits SMALLINT NOT NULL,
+   card_type TINYINT NOT NULL,
+   created_at DATETIME NOT NULL,
+   facturation_address_id INT NOT NULL,
+   PRIMARY KEY(command_id),
+   FOREIGN KEY(facturation_address_id) REFERENCES facturation_address(facturation_address_id)
+);
+
 CREATE TABLE product_order(
    product_order_id INT AUTO_INCREMENT,
    quantity INT NOT NULL,
@@ -145,14 +161,14 @@ CREATE TABLE product_order(
 
 CREATE TABLE delivery(
    delivery_id INT AUTO_INCREMENT,
-   estimated_delivery_date DATE NOT NULL,
    status VARCHAR(50)  NOT NULL,
-   delivered_date DATETIME,
+   tracking_number VARCHAR(13) ,
+   delivery_line_link VARCHAR(2083) ,
    command_id INT NOT NULL,
    customer_address_id INT NOT NULL,
    PRIMARY KEY(delivery_id),
    FOREIGN KEY(command_id) REFERENCES command(command_id),
-   FOREIGN KEY(customer_address_id) REFERENCES customer_address(customer_address_id)
+   FOREIGN KEY(customer_address_id) REFERENCES delivery_address(customer_address_id)
 );
 
 CREATE TABLE shipping_cost(
@@ -195,6 +211,7 @@ CREATE TABLE populate(
    FOREIGN KEY(user_comment_id) REFERENCES user_comment(user_comment_id),
    FOREIGN KEY(thread_id) REFERENCES thread(thread_id)
 );
+
 
 
 /* ---------------------- FILL DATABASE WITH EXAMPLE DATA ---------------------- */
@@ -266,18 +283,23 @@ SET @exmaple_user_comment_id_3 = LAST_INSERT_ID();
 
 INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id_1, @exmaple_user_comment_id_3);
 
+/* ADD EXAMPLE FACTURATION_ADDRESS */
+INSERT INTO facturation_address (firstname, lastname, city, street, zip_code, email, more_info, phone_number) 
+   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'difallahadam2003@gmail.com','Building 7, 4th Floor, Door/Box 99', '+33 7 49 02 26 39');
+SET @example_facturation_address = LAST_INSERT_ID();
+
 /* ADD EXAMPLE COMMAND */
-INSERT INTO command (card_last_digits, card_type, created_at) VALUES (4726, "VISA", NOW());
+INSERT INTO command (card_last_digits, card_type, created_at, facturation_address_id) VALUES (4726, 0, NOW(), @example_facturation_address);
 SET @example_command_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER_ADDRESS */
-INSERT INTO customer_address (firstname, lastname, city, street, zip_code, more_info, customer_id) 
-   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', @example_customer_id);
+INSERT INTO delivery_address (firstname, lastname, city, street, zip_code, more_info, phone_number, customer_id) 
+   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', "+33 7 49 02 26 39", @example_customer_id);
 SET @example_customer_address = LAST_INSERT_ID();
 
 /* ADD EXAMPLE DELIVERY */
-INSERT INTO delivery (estimated_delivery_date, status, command_id, customer_address_id)
-   VALUES (DATE_ADD(NOW(), INTERVAL 3 DAY), "In Preparation", @example_command_id, @example_customer_address);
+INSERT INTO delivery (status, tracking_number, delivery_line_link,command_id, customer_address_id)
+   VALUES ("In Preparation", 'SL3MEKG7M9D9F', 'https://www.google.com', @example_command_id, @example_customer_address);
 
 /* ADD EXAMPLE PRODUCT ORDER */
 INSERT INTO product_order (quantity, command_id, product_id) 

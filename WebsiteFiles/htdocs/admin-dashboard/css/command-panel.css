@@ -1,6 +1,5 @@
 .command_main_container {
     display: flex;
-    justify-content: center;
     width: 75vw;
 }
 
@@ -9,6 +8,10 @@
     padding-bottom: 40px;
     font-weight: 500;
     color: #588535;
+}
+
+.command_order_date {
+    margin-bottom: 20px;
 }
 
 .command_pending_container {
@@ -39,4 +42,69 @@
 .command_image {
     width: 125px;
     height: 125px;
+}
+
+.command_page_title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #588535;
+}
+
+.selected_command_title {
+    color: #757575;
+    font-size: 0.9rem;
+    padding-bottom: 0.5em;
+}
+
+.command_info {
+    color: #000;
+    font-size: 0.9rem;
+    padding-bottom: 0.5em;
+}
+
+.command_details_content_container {
+    background-color: rgba(88, 133, 53, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.delivery_status {
+    color: #588535;
+    padding-bottom: 1em;
+}
+
+.delivery_info_container {
+    display: flex;
+}
+
+.delivery_address_container,
+.delivery_status_container {
+    padding: 0px 150px 0px 0px;
+}
+
+.tracking_number_link {
+    text-decoration: underline;
+    color: #000;
+    transition: color 0.2s;
+}
+
+.tracking_number_link:hover {
+    text-decoration: underline;
+    color: #588535;
+}
+
+.command_spacer {
+    margin-top: 20px;
+    border-bottom: 1.25px solid #75757533;
+}
+
+.product_order_image {
+    width: 100px;
+}
+
+.product_order_item {
+    padding: 20px 0px;
+    align-items: center;
+    display: flex;
 }

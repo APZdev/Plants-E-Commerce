@@ -114,23 +114,21 @@
 
                         $totalPrice += $productOrder['quantity'] * $product['price_excl_tax'] * (1 + $taxRate / 100);
                         $formattedDate = date("F jS, Y", strtotime($command['created_at']));
-                        $totalPrice += $shippingCost;
                     ?>
                     <div class="product_order_item">
                         <img src="<?= $productImage ?>" alt="product_image" class="product_order_image">
                         <div class="product_order_info_container">
                             <p class="product_order_name"><?= $product['name'] ?></p>
-                            <div class="short_desc_info_container">
+                            <div class="d-flex short_desc_info_container">
                                 <p class="selected_command_title short_desc_title">Description : </p>
-                                <p class="short_desc"></p>
+                                <p class="command_info short_desc"><?= $product['short_description'] ?></p>
                             </div>
-                            <div class="quantity_info_container">
-                                <p class="quantity_title">Quantity : </p>
-                                <p class="quantity_value"></p>
+                            <div class="d-flex quantity_info_container">
+                                <p class="selected_command_title quantity_title">Quantity :</p>
+                                <p class="command_info quantity_value"><?= $productOrder['quantity'] ?></p>
                             </div>
                         </div>
                     </div>
-                    <div class="command_spacer"></div>
                 <?php } ?>
                 <?php $totalPrice += $shippingCost; ?>
             </div>

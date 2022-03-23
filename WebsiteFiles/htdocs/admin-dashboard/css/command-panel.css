@@ -53,13 +53,13 @@
 
 .selected_command_title {
     color: #757575;
-    font-size: 0.9rem;
-    padding-bottom: 0.5em;
+    font-size: 0.8rem;
+    padding-bottom: 12px;
 }
 
 .command_info {
     color: #000;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding-bottom: 0.5em;
 }
 
@@ -76,6 +76,7 @@
 
 .delivery_info_container {
     display: flex;
+    padding-bottom: 20px;
 }
 
 .delivery_address_container,
@@ -84,6 +85,7 @@
 }
 
 .tracking_number_link {
+    font-size: 0.9rem;
     text-decoration: underline;
     color: #000;
     transition: color 0.2s;
@@ -95,7 +97,6 @@
 }
 
 .command_spacer {
-    margin-top: 20px;
     border-bottom: 1.25px solid #75757533;
 }
 
@@ -107,4 +108,16 @@
     padding: 20px 0px;
     align-items: center;
     display: flex;
+}
+
+.product_order_name {
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    margin-bottom: 24px;
+}
+
+.quantity_title,
+.short_desc_title {
+    margin-right: 8px;
 }

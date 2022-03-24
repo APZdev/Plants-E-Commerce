@@ -144,7 +144,7 @@
     justify-content: space-between;
 }
 
-.prices_container>div {
+.prices_container > div {
     margin-bottom: 8px;
 }
 
@@ -179,7 +179,7 @@
 
 .payment_method_logo {
     height: 0.8rem;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .paymeny_card_info_container {

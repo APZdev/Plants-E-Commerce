@@ -24,7 +24,7 @@
         elseif($id == 2)
             return "Mastercard";
         else
-            return "Standard Credit Card";
+            return "Credit Card";
     }
 
     function fromIdToCardImage($id) {

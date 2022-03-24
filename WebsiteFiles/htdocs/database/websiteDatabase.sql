@@ -291,7 +291,7 @@ INSERT INTO facturation_address (firstname, lastname, city, street, zip_code, em
 SET @example_facturation_address = LAST_INSERT_ID();
 
 /* ADD EXAMPLE COMMAND */
-INSERT INTO command (card_last_digits, card_type, created_at, complete, facturation_address_id) VALUES (4726, 0, NOW(), 0, @example_facturation_address);
+INSERT INTO command (card_last_digits, card_type, created_at, complete, facturation_address_id) VALUES (4726, 2, NOW(), 0, @example_facturation_address);
 SET @example_command_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER_ADDRESS */

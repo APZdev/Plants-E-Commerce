@@ -93,9 +93,11 @@
                         <a href="<?= $deliveryInfo['delivery_line_link'] ?>" class="tracking_number_link"><?= $deliveryInfo['tracking_number'] ?></a>
                     </div>
                 </div>
-                <div class="command_spacer"></div>
                 <?php 
+                    $totalPriceExclTax = 0;
+                    $totalTaxCost = 0;
                     $totalPrice = 0;
+                    $totalShippingCost = 0;
                     $productOrders = $customRequest->getData(
                         "SELECT quantity, product_id, product_order_id 
                         FROM product_order
@@ -112,9 +114,13 @@
                         $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_order_id']}")->fetch_object()->price;
                         $productImage = $db->con->query("SELECT url FROM image WHERE image_id = {$product['image_id']}")->fetch_object()->url;
 
+                        $totalPriceExclTax += $productOrder['quantity'] * $product['price_excl_tax'];
+                        $totalTaxCost += $productOrder['quantity'] * $product['price_excl_tax'] * ($taxRate / 100);
                         $totalPrice += $productOrder['quantity'] * $product['price_excl_tax'] * (1 + $taxRate / 100);
+                        $totalShippingCost += $shippingCost;
                         $formattedDate = date("F jS, Y", strtotime($command['created_at']));
                     ?>
+                    <div class="command_spacer"></div>
                     <div class="product_order_item">
                         <img src="<?= $productImage ?>" alt="product_image" class="product_order_image">
                         <div class="product_order_info_container">
@@ -131,6 +137,28 @@
                     </div>
                 <?php } ?>
                 <?php $totalPrice += $shippingCost; ?>
+            </div>
+            <div class="product_order_total_container">
+                <div class="prices_container">
+                    <div class="pre_total_container">
+                        <p class="price_title">Subtotal</p>
+                        <p class="price_value"><?= $totalPriceExclTax ?> $</p>
+                    </div>
+                    <div class="delivery_cost_container">
+                        <p class="price_title">Delivery of the order</p>
+                        <p class="price_value"><?= $totalShippingCost ?> $</p>
+                    </div>
+                    <div class="tva_price_container">
+                        <p class="price_title">Tax cost</p>
+                        <p class="price_value"><?= $totalTaxCost ?> $</p>
+                    </div>
+                </div>
+                <div class="total_prices_container">
+                    <div class="total_content_container">
+                        <p class="total_title">Total : </p>
+                        <p class="total_value"><?= $totalPrice ?> $</p>
+                    </div>
+                </div>
             </div>
         </div>
     <?php } ?>

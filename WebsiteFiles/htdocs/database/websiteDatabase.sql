@@ -301,13 +301,20 @@ SET @example_customer_address = LAST_INSERT_ID();
 INSERT INTO delivery (status, tracking_number, delivery_line_link,command_id, customer_address_id)
    VALUES ("In Preparation", 'SL3MEKG7M9D9F', 'https://www.google.com', @example_command_id, @example_customer_address);
 
-/* ADD EXAMPLE PRODUCT ORDER */
+/* ADD EXAMPLE PRODUCT ORDERS */
 INSERT INTO product_order (quantity, command_id, product_id) 
    VALUES (2, @example_command_id, @example_product_id_1);
-SET @example_product_order_id = LAST_INSERT_ID();
+SET @example_product_order_id_1 = LAST_INSERT_ID();
+
+INSERT INTO product_order (quantity, command_id, product_id) 
+   VALUES (4, @example_command_id, @example_product_id_2);
+SET @example_product_order_id_2 = LAST_INSERT_ID();
 
 /* ADD EXAMPLE SHIPPING COST */
-INSERT INTO shipping_cost (price, product_order_id) VALUES (4.99, @example_product_order_id);
+INSERT INTO shipping_cost (price, product_order_id) VALUES (4.99, @example_product_order_id_1);
+
+/* ADD EXAMPLE SHIPPING COST */
+INSERT INTO shipping_cost (price, product_order_id) VALUES (3.99, @example_product_order_id_2);
 
 /* ADD COMMAND RESERVATION BY CUSTOMER */
 INSERT INTO reserve (customer_id, command_id) VALUES (@example_customer_id, @example_command_id);

@@ -65,8 +65,8 @@
 
 .command_details_content_container {
     background-color: rgba(88, 133, 53, 0.1);
-    padding: 40px;
-    border-radius: 12px;
+    padding: 40px 40px 0px 40px;
+    border-radius: 12px 12px 0px 0px;
 }
 
 .delivery_status {
@@ -120,4 +120,42 @@
 .quantity_title,
 .short_desc_title {
     margin-right: 8px;
+}
+
+.product_order_total_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 1.25px solid #75757533;
+    height: 190px;
+    width: 100%;
+    background-color: rgba(88, 133, 53, 0.2);
+    padding: 40px;
+    border-radius: 0px 0px 12px 12px;
+}
+
+.total_content_container,
+.pre_total_container,
+.delivery_cost_container,
+.tva_price_container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.prices_container>div {
+    margin-bottom: 8px;
+}
+
+.price_title,
+.price_value {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #757575;
+}
+
+.total_title,
+.total_value {
+    font-weight: 600;
+    font-size: 1rem;
 }

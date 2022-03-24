@@ -132,6 +132,7 @@
     background-color: rgba(88, 133, 53, 0.2);
     padding: 40px;
     border-radius: 0px 0px 12px 12px;
+    margin-bottom: 40px;
 }
 
 .total_content_container,
@@ -158,4 +159,49 @@
 .total_value {
     font-weight: 600;
     font-size: 1rem;
+}
+
+.delivery_info_content_container {
+    background-color: rgba(88, 133, 53, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.delivery_info_title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.payment_card_name_digits {
+    padding-bottom: 0px !important;
+}
+
+.payment_method_logo {
+    height: 0.8rem;
+    margin-right: 30px;
+}
+
+.paymeny_card_info_container {
+    display: flex;
+    align-items: center;
+}
+
+.delivery_spacer {
+    margin: 30px 0 30px 0;
+}
+
+.phone_number {
+    margin-top: 20px;
+}
+
+.delivery_global_content_container,
+.facturation_global_content_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery_global_content_container,
+.facturation_global_content_container {
+    padding: 0px 150px 0px 0px;
 }

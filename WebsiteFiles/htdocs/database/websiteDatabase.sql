@@ -144,6 +144,7 @@ CREATE TABLE command(
    card_last_digits SMALLINT NOT NULL,
    card_type TINYINT NOT NULL,
    created_at DATETIME NOT NULL,
+   complete BOOLEAN,
    facturation_address_id INT NOT NULL,
    PRIMARY KEY(command_id),
    FOREIGN KEY(facturation_address_id) REFERENCES facturation_address(facturation_address_id)
@@ -211,6 +212,7 @@ CREATE TABLE populate(
    FOREIGN KEY(user_comment_id) REFERENCES user_comment(user_comment_id),
    FOREIGN KEY(thread_id) REFERENCES thread(thread_id)
 );
+
 
 
 
@@ -289,7 +291,7 @@ INSERT INTO facturation_address (firstname, lastname, city, street, zip_code, em
 SET @example_facturation_address = LAST_INSERT_ID();
 
 /* ADD EXAMPLE COMMAND */
-INSERT INTO command (card_last_digits, card_type, created_at, facturation_address_id) VALUES (4726, 0, NOW(), @example_facturation_address);
+INSERT INTO command (card_last_digits, card_type, created_at, complete, facturation_address_id) VALUES (4726, 0, NOW(), 0, @example_facturation_address);
 SET @example_command_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER_ADDRESS */

@@ -1,14 +1,11 @@
 <div class="command_main_container">
     <script src="/admin-dashboard/js/command-panel.js" defer></script>
     <?php if(!isset($_GET['command_id'])){?>
-    <?php
-        $commands = $customRequest->getData(
-            "SELECT command_id, created_at, card_last_digits, complete FROM command"); 
-    ?>
     <div class="command_pending_container">
         <p class="command_title">Pending Commands</p>
-        <?php if(count($commands) > 0) {?>
-            <?php foreach($commands as $command) {?>
+        <?php $PendingCommands = $customRequest->getData("SELECT command_id, created_at, card_last_digits FROM command WHERE complete = 0"); ?>
+        <?php if(count($PendingCommands) > 0) {?>
+            <?php foreach($PendingCommands as $command) {?>
                 <?php 
                     $totalPriceExclTax = 0;
                     $totalTaxCost = 0;
@@ -37,16 +34,14 @@
 
                     $totalPrice += $totalShippingCost;
                 ?>
-                <?php if($command['complete'] == 0) { ?>
-                    <div class="command_item" data-id="<?= $command['command_id'] ?>">
-                        <img src="../../website/graphics/img/logo.png" alt="command_item_image" class="command_image">
-                        <div class="command_info_container">
-                            <p class="command_ordered_date">Ordered on <strong><?= $formattedDate ?></strong></p>
-                            <p class="command_payment_card_digits">Payment card  : <strong>****<?= $command['card_last_digits'] ?></strong></p>
-                            <p class="command_total_price">Total : <strong><?= $totalPrice ?> $</strong></p>
-                        </div>
+                <div class="command_item" data-id="<?= $command['command_id'] ?>">
+                    <img src="../../website/graphics/img/logo.png" alt="command_item_image" class="command_image">
+                    <div class="command_info_container">
+                        <p class="command_ordered_date">Ordered on <strong><?= $formattedDate ?></strong></p>
+                        <p class="command_payment_card_digits">Payment card  : <strong>****<?= $command['card_last_digits'] ?></strong></p>
+                        <p class="command_total_price">Total : <strong><?= $totalPrice ?> $</strong></p>
                     </div>
-                <?php } ?>
+                </div>
             <?php } ?>
         <?php } else { ?>
             <p class="no_comments_text">No comments on this thread.</p>
@@ -55,8 +50,9 @@
     </div>
     <div class="command_finished_container">
         <p class="command_title">Completed Commands</p>
-        <?php if(count($commands) > 0) {?>
-            <?php foreach($commands as $command) {?>
+        <?php $completeCommands = $customRequest->getData("SELECT command_id, created_at, card_last_digits FROM command WHERE complete = 1"); ?>
+        <?php if(count($completeCommands) > 0) {?>
+            <?php foreach($completeCommands as $command) {?>
                 <?php 
                     $totalPriceExclTax = 0;
                     $totalTaxCost = 0;
@@ -85,16 +81,14 @@
 
                     $totalPrice += $totalShippingCost;
                 ?>
-                <?php if($command['complete'] == 1) { ?>
-                    <div class="command_item" data-id="<?= $command['command_id'] ?>">
-                        <img src="../../website/graphics/img/logo.png" alt="command_item_image" class="command_image">
-                        <div class="command_info_container">
-                            <p class="command_ordered_date">Ordered on <strong><?= $formattedDate ?></strong></p>
-                            <p class="command_payment_card_digits">Payment card  : <strong>****<?= $command['card_last_digits'] ?></strong></p>
-                            <p class="command_total_price">Total : <strong><?= $totalPrice ?> $</strong></p>
-                        </div>
+                <div class="command_item" data-id="<?= $command['command_id'] ?>">
+                    <img src="../../website/graphics/img/logo.png" alt="command_item_image" class="command_image">
+                    <div class="command_info_container">
+                        <p class="command_ordered_date">Ordered on <strong><?= $formattedDate ?></strong></p>
+                        <p class="command_payment_card_digits">Payment card  : <strong>****<?= $command['card_last_digits'] ?></strong></p>
+                        <p class="command_total_price">Total : <strong><?= $totalPrice ?> $</strong></p>
                     </div>
-                <?php } ?>
+                </div>
             <?php } ?>
         <?php } else { ?>
             <p class="no_comments_text">No comments on this thread.</p>
@@ -161,8 +155,8 @@
                     <?php 
                         $product = $customRequest->getData(
                             "SELECT name, short_description, price_excl_tax, tax_id, image_id
-                             FROM product
-                             WHERE product_id = {$productOrder['product_id']} LIMIT 1")[0]; 
+                                FROM product
+                                WHERE product_id = {$productOrder['product_id']} LIMIT 1")[0]; 
         
                         $taxRate = $db->con->query("SELECT rate FROM tax WHERE tax_id = {$product['tax_id']}")->fetch_object()->rate;
                         $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_order_id']}")->fetch_object()->price;

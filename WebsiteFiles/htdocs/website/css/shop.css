@@ -1,0 +1,184 @@
+.shop_main_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 92%;
+}
+
+.design_section_container {
+    display: flex;
+    justify-content: space-around;
+    min-height: 600px;
+    margin: 2em 0px 4em 0px;
+}
+
+.title_button_container {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.design_graphics_container {
+    width: 45%;
+    position: relative;
+}
+
+.graphics_title {
+    padding-top: 3.2rem;
+    color: #000;
+    font-size: 5rem;
+    font-weight: 600;
+    margin-bottom: 5rem;
+}
+
+.shop_now_button {
+    width: fit-content;
+    color: #589440;
+    font-weight: 700;
+    border: 2px solid #589440;
+    border-radius: 5px;
+    padding: 1em 2em;
+    cursor: pointer;
+}
+
+.design_shape_image,
+.design_plant_image {
+    position: absolute;
+    right: 0;
+}
+
+.design_shape_image {
+    height: 100%;
+}
+
+.design_plant_image {
+    height: 100%;
+    padding: 3.2em;
+    border-radius: 50px !important;
+}
+
+.selection_section_main_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4em;
+}
+
+.filters_sidebar_container {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 0.2em 2.5em 2.5em 1.5em;
+    box-shadow: 0px 0px 50px #00000022;
+    width: 18%;
+    height: fit-content;
+}
+
+.filter_title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 30px 0px 24px 0px;
+}
+
+.filter_category_filter_item.selected > .filter_category_filter_name,
+.filter_category_filter_item.selected > .filter_category_filter_amount {
+    color: #589440;
+    font-weight: 600;
+}
+
+.filter_category_filter_item {
+    padding-left: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+input[type="range"].filter_price_range {
+    width: 80%;
+    height: 5px;
+    -webkit-appearance: none; /*nécessaire pour Chrome */
+    padding: 0; /* nécessaire pour IE */
+    font: inherit; /* même rendu suivant font document */
+    outline: none;
+    color: #589440; /* sert pour couleur de référence, via currentColor, pour le curseur */
+    background: #6db650; /* sert pour couleur de fond de la zone de déplacement */
+    box-sizing: border-box; /* même modèle de boîte pour tous */
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Special styling for WebKit/Blink */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: #589440;
+    cursor: pointer;
+    margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    border: 1.5px solid #ffffffdd; /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type="range"]::-moz-range-thumb {
+    border: 1.5px solid #ffffffdd;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: #589440;
+    cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type="range"]::-ms-thumb {
+    border: 1.5px solid #ffffffdd;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: #589440;
+    cursor: pointer;
+}
+
+.sort_results_products_container {
+    width: 78%;
+}
+
+.sort_results_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1em 0 3em 0;
+}
+
+.sort_by_dropdown {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: #00000000;
+}
+
+.showing_results {
+    color: #7e7e7e;
+}
+
+.products_grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5em;
+}
+
+.product_card_image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.product_card_name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.product_card_price {
+    color: #589440;
+    font-size: 1.1rem;
+    font-weight: 600;
+}

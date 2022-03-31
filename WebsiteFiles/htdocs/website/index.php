@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="./css/authentication-modal.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" href="./css/footer.css">
 
     <script src="./js/index.js" defer></script>
-    <script src="./js/captcha.js" defer></script>
 </head>
 
 <body>

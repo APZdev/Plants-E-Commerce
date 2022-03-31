@@ -1,4 +1,5 @@
 <div class='navbar'>
+    <script src="./js/captcha.js" defer></script>
     <?php 
         function currentPage($getName){
             if(isset($_GET['page']))

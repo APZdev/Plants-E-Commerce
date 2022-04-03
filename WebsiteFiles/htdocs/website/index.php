@@ -1,4 +1,5 @@
 <?php require_once('./../utilities.php') ?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,9 +12,9 @@
     </script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/authentication-modal.css">
-    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" href="./css/footer.css">

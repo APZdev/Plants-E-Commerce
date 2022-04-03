@@ -10,7 +10,7 @@
     color: #588535;
 }
 
-.command_order_date {
+.command_command_date {
     margin-bottom: 20px;
 }
 
@@ -110,7 +110,7 @@
     display: flex;
 }
 
-.product_order_name {
+.product_command_name {
     font-weight: 500;
     font-size: 0.9rem;
     text-decoration: underline;
@@ -178,7 +178,7 @@
 }
 
 .payment_method_logo {
-    height: 0.8rem;
+    height: 1.5rem;
     margin-right: 20px;
 }
 

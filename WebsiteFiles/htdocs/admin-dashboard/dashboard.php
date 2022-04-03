@@ -1,4 +1,5 @@
 <?php require_once('./../utilities.php') ?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,7 +12,8 @@
     <link rel="stylesheet" href="/admin-dashboard/css/dashboard.css">
     <link rel="stylesheet" href="/admin-dashboard/css/navbar.css">
     <link rel="stylesheet" href="/admin-dashboard/css/product-panel.css">
-    <link rel="stylesheet" href="/admin-dashboard/css/command-panel.css">
+    <link rel="stylesheet" href="/admin-dashboard/css/order-panel.css">
+    <link rel="stylesheet" href="/admin-dashboard/css/user-panel.css">
     <link rel="stylesheet" href="/admin-dashboard/css/event-panel.css">
     <link rel="stylesheet" href="/admin-dashboard/css/thread-panel.css">
     <link rel="stylesheet" href="/admin-dashboard/css/activity-panel.css">
@@ -30,8 +32,10 @@
                     //Update content based on current page
                     if($_GET['page'] == "product-panel")
                         include('./pages/product-panel.php');
-                    else if($_GET['page'] == "command-panel")
-                        include('./pages/command-panel.php');
+                    else if($_GET['page'] == "order-panel")
+                        include('./pages/order-panel.php');
+                    else if($_GET['page'] == "user-panel")
+                        include('./pages/user-panel.php');
                     else if($_GET['page'] == "event-panel")
                         include('./pages/event-panel.php');
                     else if($_GET['page'] == "thread-panel")

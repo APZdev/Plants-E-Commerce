@@ -13,10 +13,16 @@
                 <h2 class="navbar_item_title selected">Products</h2>
             </div>
         </a>
-        <a href="/admin-dashboard/dashboard.php?page=command-panel">
-            <div class="navbar_item <?php isNavbarButtonSelected("command-panel"); ?>">
+        <a href="/admin-dashboard/dashboard.php?page=order-panel">
+            <div class="navbar_item <?php isNavbarButtonSelected("order-panel"); ?>">
                 <i class="navbar_item_image far fa-shopping-bag"></i>
-                <h2 class="navbar_item_title">Commands</h2>
+                <h2 class="navbar_item_title">Orders</h2>
+            </div>
+        </a>
+        <a href="/admin-dashboard/dashboard.php?page=user-panel">
+            <div class="navbar_item <?php isNavbarButtonSelected("user-panel"); ?>">
+                <i class="navbar_item_image far fa-user"></i>
+                <h2 class="navbar_item_title">Users</h2>
             </div>
         </a>
         <a href="/admin-dashboard/dashboard.php?page=event-panel">

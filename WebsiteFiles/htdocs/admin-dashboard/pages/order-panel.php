@@ -2,7 +2,7 @@
     <script src="/admin-dashboard/js/command-panel.js" defer></script>
     <?php if(!isset($_GET['command_id'])){?>
     <div class="command_pending_container">
-        <p class="command_title">Pending Commands</p>
+        <p class="command_title">Pending Orders</p>
         <?php $PendingCommands = $customRequest->getData("SELECT command_id, created_at, card_last_digits FROM command WHERE complete = 0"); ?>
         <?php if(count($PendingCommands) > 0) {?>
             <?php foreach($PendingCommands as $command) {?>
@@ -12,7 +12,7 @@
                     $totalPrice = 0;
                     $totalShippingCost = 0;
                     $productOrders = $customRequest->getData(
-                        "SELECT po.quantity, po.product_id, po.product_order_id 
+                        "SELECT po.quantity, po.product_id, po.command_id 
                          FROM product_order po
                          WHERE po.command_id = {$command['command_id']};"); 
                     
@@ -23,7 +23,7 @@
                              WHERE p.product_id = {$productOrder['product_id']} LIMIT 1")[0]; 
 
                         $taxRate = $db->con->query("SELECT rate FROM tax WHERE tax_id = {$product['tax_id']}")->fetch_object()->rate;
-                        $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_order_id']}")->fetch_object()->price;
+                        $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_id']}")->fetch_object()->price;
 
                         $totalPriceExclTax += $productOrder['quantity'] * $product['price_excl_tax'];
                         $totalTaxCost += $productOrder['quantity'] * $product['price_excl_tax'] * ($taxRate / 100);
@@ -49,7 +49,7 @@
         <?php } ?>
     </div>
     <div class="command_finished_container">
-        <p class="command_title">Completed Commands</p>
+        <p class="command_title">Completed Orders</p>
         <?php $completeCommands = $customRequest->getData("SELECT command_id, created_at, card_last_digits FROM command WHERE complete = 1"); ?>
         <?php if(count($completeCommands) > 0) {?>
             <?php foreach($completeCommands as $command) {?>
@@ -123,7 +123,7 @@
                 WHERE command_id = {$commandId}")[0];
         ?>
         <div class="command_details_container">
-            <p class="command_page_title">Command details</p>
+            <p class="command_page_title">Order details</p>
             <p class="selected_command_title command_order_date">Ordered on <?= $formattedOrderDate ?></p>
             <div class="command_details_content_container">
                 <div class="delivery_info_container">

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 92%;
+    width: 85%;
 }
 
 .design_section_container {
@@ -54,7 +54,7 @@
 .design_plant_image {
     height: 100%;
     padding: 3.2em;
-    border-radius: 50px !important;
+    border-radius: 4em;
 }
 
 .selection_section_main_container {
@@ -72,6 +72,16 @@
     height: fit-content;
 }
 
+.filters_sidebar_container * {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .filter_title {
     font-size: 1.2rem;
     font-weight: 600;
@@ -84,6 +94,10 @@
     font-weight: 600;
 }
 
+.filter_category_filter_name:hover {
+    cursor: pointer;
+}
+
 .filter_category_filter_item {
     padding-left: 1.5em;
     display: flex;
@@ -92,26 +106,13 @@
     margin-bottom: 24px;
 }
 
-input[type="range"].filter_price_range {
-    width: 80%;
-    height: 5px;
-    -webkit-appearance: none; /*nécessaire pour Chrome */
-    padding: 0; /* nécessaire pour IE */
-    font: inherit; /* même rendu suivant font document */
-    outline: none;
-    color: #589440; /* sert pour couleur de référence, via currentColor, pour le curseur */
-    background: #6db650; /* sert pour couleur de fond de la zone de déplacement */
-    box-sizing: border-box; /* même modèle de boîte pour tous */
-    border-radius: 12px;
-    cursor: pointer;
-}
-
 /* Special styling for WebKit/Blink */
 input[type="range"]::-webkit-slider-thumb {
+    pointer-events: auto;
     -webkit-appearance: none;
     border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: #589440;
     cursor: pointer;
     margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
@@ -120,22 +121,84 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* All the same stuff for Firefox */
 input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    border-radius: 10px;
+    pointer-events: auto;
     border: 1.5px solid #ffffffdd;
     border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: #589440;
     cursor: pointer;
 }
 
 /* All the same stuff for IE */
 input[type="range"]::-ms-thumb {
+    appearance: none;
+    pointer-events: auto;
     border: 1.5px solid #ffffffdd;
     border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: #589440;
     cursor: pointer;
+}
+
+.filter_range_wrapper {
+    width: 90%;
+}
+
+.double-range-slider-container {
+    position: relative;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.slider-track {
+    width: 100%;
+    height: 5px;
+    background: #6db65099;
+    border-radius: 3px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+}
+
+.filter_range_values {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    right: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 15px;
+    color: #589440;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.filter_range_values > p {
+    left: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    position: absolute;
+    margin-left: 50%;
 }
 
 .sort_results_products_container {
@@ -145,8 +208,18 @@ input[type="range"]::-ms-thumb {
 .sort_results_container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    margin: 1em 0 3em 0;
+    margin: 0 0 3em 0;
+}
+
+.sort_search_bar {
+    padding: 0 1.75em 0 1.75em;
+    background-color: #fff;
+    width: 40%;
+    height: 50px;
+    border-radius: 40px;
+    margin-right: 10px;
 }
 
 .sort_by_dropdown {
@@ -163,6 +236,10 @@ input[type="range"]::-ms-thumb {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2.5em;
+}
+
+.product_card_item:hover {
+    cursor: pointer;
 }
 
 .product_card_image {

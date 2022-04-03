@@ -32,7 +32,7 @@
                         <i class='email_icon_indicator fal fa-envelope'></i>
                         <p>You will be redirected shortly...</p>";
 
-                        header( "refresh:6; url=/index.php?page=home" ); 
+                        header( "refresh:6; url=/website/index.php?page=home" ); 
                         exit;
                 }
                 else if($_GET['page'] == "verify" && isset($_GET['vkey']))
@@ -52,7 +52,7 @@
                             <i class='email_icon_indicator fal fa-envelope-open'></i>
                             <p>Redirecting in few seconds...</p>";
 
-                            header( "refresh:3; url=/index.php?page=home&authentication=login" ); 
+                            header( "refresh:3; url=/website/index.php?page=home&authentication=login" ); 
                             exit;
                         }
                         else
@@ -65,7 +65,7 @@
                                 <i class='email_icon_indicator fal fa-envelope-open'></i>
                                 <p>Redirecting in few seconds...</p>";
                                       
-                                header( "refresh:3; url=/index.php?page=home&authentication=login" ); 
+                                header( "refresh:3; url=/website/index.php?page=home&authentication=login" ); 
                                 exit;
                             }
                         }

@@ -2,7 +2,6 @@
 DROP DATABASE IF EXISTS tropicalinterior;
 CREATE DATABASE IF NOT EXISTS tropicalinterior;
 USE tropicalinterior;
-/* ctrl + f : MEDIUMINT AUTO_INCREMENT for MEDIUMINT AUTO_INCREMENT */
 
 
 CREATE TABLE customer(
@@ -224,8 +223,12 @@ SET @admin_user_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER ACCOUNTS Email : axtom77@hotmail.fr, PWD : admin123 */
 INSERT INTO customer (firstname, lastname, email, password, vkey, verified, registration_date, update_date) 
+   VALUES ('Adam', 'Pomposelli', 'difallahadam2003@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', '0192023a7bbd73250516f069df18b500', 1, NOW(), NOW());
+SET @example_customer_id_1 = LAST_INSERT_ID();
+
+INSERT INTO customer (firstname, lastname, email, password, vkey, verified, registration_date, update_date) 
    VALUES ('Tom', 'Virard', 'axtom77@hotmail.fr', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', '0192023a7bbd73250516f069df18b500', 1, NOW(), NOW());
-SET @example_customer_id = LAST_INSERT_ID();
+SET @example_customer_id_2 = LAST_INSERT_ID();
 
 /* SETUP MULTIPLE EXAMPLE EVENTS (Without image) */
 INSERT INTO image (url) VALUES ('../../uploads/image/test.png');
@@ -238,41 +241,44 @@ INSERT INTO event (type, start_time, end_time, title, description, address, admi
    VALUES ('Event Type 2', NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY), 'Event Title 2', 'Event Description 2', 'Event Address 2', @admin_user_id, LAST_INSERT_ID());
 
 /* SUBSCRIBE A CUSTOMER TO AN EVENT */
-INSERT INTO subscribe (customer_id, event_id) VALUES (@example_customer_id, @example_event_id);
+INSERT INTO subscribe (customer_id, event_id) VALUES (@example_customer_id_1, @example_event_id);
 
 /* ADD EXAMPLE PRODUCT (Without image) */
 INSERT INTO tax (rate) VALUES (20.00);
 SET @tax_id = LAST_INSERT_ID();
 
-INSERT INTO image (url) VALUES ('./../../website/graphics/img/logo.png');
-SET @product_image_id = LAST_INSERT_ID();
+INSERT INTO image (url) VALUES ('./../../database/assets/images/plant4.png');
+SET @product_image_id_1 = LAST_INSERT_ID();
+
+INSERT INTO image (url) VALUES ('./../../database/assets/images/plant7.png');
+SET @product_image_id_2 = LAST_INSERT_ID();
 
 INSERT INTO category (name, description) VALUES ('Category', 'Category description');
 SET @category_id = LAST_INSERT_ID();
 
 INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
-   VALUES('Name 1', 'Short Description 1', 'Long Description 1', 45 , 15, @tax_id, @product_image_id, @category_id);
+   VALUES('Agave Octopus', 'Shorter, xerophytic type plant that tolerates hot sun.  Leaves curved and shaped like Octopus.  Leaves thick and fleshy.', 'Shorter, xerophytic type plant that tolerates hot sun.  Leaves are thick and fleshy and take on a blue color, even in part sun.  Over many years slowly form trunks as shown here.  Almost a "cartoon -like, Dr. Seuss" plant.  Old trunk specimens are occasionally available.', 45 , 15, @tax_id, @product_image_id_1, @category_id);
 SET @example_product_id_1 = LAST_INSERT_ID();
 
 INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
-   VALUES('Name 2', 'Short Description 2', 'Long Description 2', 25 , 10, @tax_id, @product_image_id, @category_id);
+   VALUES('Alocasia Calidora', 'Easy to grow if one gives them enough water.  This hybrid is very short, much shorter than A. calidora below.  Too much sun or lack of water browns leaves.', 'Usually mounted with fishing line tied to galvanized nails.  A spray every week or ten days is adequate unless super hot.  Occasional spray with liquid fertilizer.  Very reliable plants.  Various species offered over time.', 25 , 10, @tax_id, @product_image_id_2, @category_id);
 SET @example_product_id_2 = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER VISIT LOGS */
-INSERT INTO activity_log (action, created_at, customer_id) VALUES ('Visit : Home Page', NOW(), @example_customer_id), ('Visit : Events Page', NOW(), @example_customer_id);
+INSERT INTO activity_log (action, created_at, customer_id) VALUES ('Visit : Home Page', NOW(), @example_customer_id_1), ('Visit : Events Page', NOW(), @example_customer_id_1);
 
 /* ADD EXAMPLE CUSTOMER THREAD */
-INSERT INTO thread (title, type, customer_id) VALUES ('Thread Title 1', 'Thread Type 1', @example_customer_id), ('Thread Title 2', 'Thread Type 2', @example_customer_id);
+INSERT INTO thread (title, type, customer_id) VALUES ('Thread Title 1', 'Thread Type 1', @example_customer_id_1), ('Thread Title 2', 'Thread Type 2', @example_customer_id_1);
 SET @example_thread_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER COMMENT TO A THREAD */
-INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id);
+INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id_1);
 SET @exmaple_user_comment_id_1 = LAST_INSERT_ID();
 
 INSERT INTO populate (user_comment_id, thread_id) VALUES (@exmaple_user_comment_id_1, @example_thread_id);
 
 /* ADD EXAMPLE CUSTOMER COMMENT TO A PRODUCT WITH A RATING */
-INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id);
+INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id_1);
 SET @exmaple_user_comment_id_2 = LAST_INSERT_ID();
 
 INSERT INTO rating (score, user_comment_id) VALUES (4, @exmaple_user_comment_id_2);
@@ -280,7 +286,7 @@ INSERT INTO rating (score, user_comment_id) VALUES (4, @exmaple_user_comment_id_
 INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id_1, @exmaple_user_comment_id_2);
 
 /* ADD EXAMPLE CUSTOMER COMMENT TO A PRODUCT */
-INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id);
+INSERT INTO user_comment (title, content, created_at, customer_id) VALUES ('Comment Title', 'Comment Content', NOW(), @example_customer_id_1);
 SET @exmaple_user_comment_id_3 = LAST_INSERT_ID();
 
 INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id_1, @exmaple_user_comment_id_3);
@@ -296,7 +302,7 @@ SET @example_command_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER_ADDRESS */
 INSERT INTO delivery_address (firstname, lastname, city, street, zip_code, more_info, phone_number, customer_id) 
-   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', "+33 7 49 02 26 39", @example_customer_id);
+   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', "+33 7 49 02 26 39", @example_customer_id_1);
 SET @example_customer_address = LAST_INSERT_ID();
 
 /* ADD EXAMPLE DELIVERY */
@@ -319,4 +325,4 @@ INSERT INTO shipping_cost (price, product_order_id) VALUES (4.99, @example_produ
 INSERT INTO shipping_cost (price, product_order_id) VALUES (3.99, @example_product_order_id_2);
 
 /* ADD COMMAND RESERVATION BY CUSTOMER */
-INSERT INTO reserve (customer_id, command_id) VALUES (@example_customer_id, @example_command_id);
+INSERT INTO reserve (customer_id, command_id) VALUES (@example_customer_id_1, @example_command_id);

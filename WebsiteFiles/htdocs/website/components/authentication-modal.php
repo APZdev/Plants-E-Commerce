@@ -1,16 +1,15 @@
 <?php
+    $modalOpened =  0;
+    $register = 0;
 
-$modalOpened =  0;
-$register = 0;
-
-if(isset($_GET['authentication']))
-{ 
-    $register = $_GET['authentication'] == "register" ? 1 : 0;
-    $modalOpened =  1;
-}
-
-
+    if(isset($_GET['authentication']))
+    { 
+        $register = $_GET['authentication'] == "register" ? 1 : 0;
+        $modalOpened =  1;
+    }
 ?>
+<script src="/website/js/captcha.js" defer></script>
+<script src="/website/js/authentication-modal.js" defer></script>
 <div class="authentication_modal_container <?php echo $modalOpened ? "" : "closed"; ?>">
     <div class="authentication_modal_content_container">
         <i class="close_button far fa-times"></i>

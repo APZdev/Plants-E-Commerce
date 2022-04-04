@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS tropicalinterior;
 CREATE DATABASE IF NOT EXISTS tropicalinterior;
 USE tropicalinterior;
@@ -125,10 +124,11 @@ CREATE TABLE facturation_address(
 CREATE TABLE product(
    product_id INT AUTO_INCREMENT,
    name VARCHAR(50)  NOT NULL,
-   short_description VARCHAR(150)  NOT NULL,
+   short_description VARCHAR(250)  NOT NULL,
    long_description VARCHAR(500)  NOT NULL,
    price_excl_tax DECIMAL(15,2)   NOT NULL,
    stock_quantity INT NOT NULL,
+   shipping_cost DECIMAL(6,2)   NOT NULL,
    tax_id INT NOT NULL,
    image_id INT NOT NULL,
    category_id INT NOT NULL,
@@ -171,15 +171,6 @@ CREATE TABLE delivery(
    FOREIGN KEY(customer_address_id) REFERENCES delivery_address(customer_address_id)
 );
 
-CREATE TABLE shipping_cost(
-   shipping_cost_id INT AUTO_INCREMENT,
-   price DECIMAL(6,2)   NOT NULL,
-   product_order_id INT NOT NULL,
-   PRIMARY KEY(shipping_cost_id),
-   UNIQUE(product_order_id),
-   FOREIGN KEY(product_order_id) REFERENCES product_order(product_order_id)
-);
-
 CREATE TABLE reserve(
    customer_id INT,
    command_id INT,
@@ -211,6 +202,8 @@ CREATE TABLE populate(
    FOREIGN KEY(user_comment_id) REFERENCES user_comment(user_comment_id),
    FOREIGN KEY(thread_id) REFERENCES thread(thread_id)
 );
+
+
 
 
 
@@ -256,12 +249,12 @@ SET @product_image_id_2 = LAST_INSERT_ID();
 INSERT INTO category (name, description) VALUES ('Category', 'Category description');
 SET @category_id = LAST_INSERT_ID();
 
-INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
-   VALUES('Agave Octopus', 'Shorter, xerophytic type plant that tolerates hot sun.  Leaves curved and shaped like Octopus.  Leaves thick and fleshy.', 'Shorter, xerophytic type plant that tolerates hot sun.  Leaves are thick and fleshy and take on a blue color, even in part sun.  Over many years slowly form trunks as shown here.  Almost a "cartoon -like, Dr. Seuss" plant.  Old trunk specimens are occasionally available.', 45 , 15, @tax_id, @product_image_id_1, @category_id);
+INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, shipping_cost, tax_id, image_id, category_id) 
+   VALUES('Agave Octopus', 'Shorter, xerophytic type plant that tolerates hot sun.  Leaves curved and shaped like Octopus.  Leaves thick and fleshy.', 'Shorter, xerophytic type plant that tolerates hot sun.  Leaves are thick and fleshy and take on a blue color, even in part sun.  Over many years slowly form trunks as shown here.  Almost a "cartoon -like, Dr. Seuss" plant.  Old trunk specimens are occasionally available.', 45 , 15, 3.99, @tax_id, @product_image_id_1, @category_id);
 SET @example_product_id_1 = LAST_INSERT_ID();
 
-INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, tax_id, image_id, category_id) 
-   VALUES('Alocasia Calidora', 'Easy to grow if one gives them enough water.  This hybrid is very short, much shorter than A. calidora below.  Too much sun or lack of water browns leaves.', 'Usually mounted with fishing line tied to galvanized nails.  A spray every week or ten days is adequate unless super hot.  Occasional spray with liquid fertilizer.  Very reliable plants.  Various species offered over time.', 25 , 10, @tax_id, @product_image_id_2, @category_id);
+INSERT INTO product (name, short_description, long_description, price_excl_tax, stock_quantity, shipping_cost, tax_id, image_id, category_id) 
+   VALUES('Alocasia Calidora', 'Easy to grow if one gives them enough water.  This hybrid is very short, much shorter than A. calidora below.  Too much sun or lack of water browns leaves.', 'Usually mounted with fishing line tied to galvanized nails.  A spray every week or ten days is adequate unless super hot.  Occasional spray with liquid fertilizer.  Very reliable plants.  Various species offered over time.', 25 , 10, 4.99, @tax_id, @product_image_id_2, @category_id);
 SET @example_product_id_2 = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER VISIT LOGS */
@@ -317,12 +310,6 @@ SET @example_product_order_id_1 = LAST_INSERT_ID();
 INSERT INTO product_order (quantity, command_id, product_id) 
    VALUES (4, @example_command_id, @example_product_id_2);
 SET @example_product_order_id_2 = LAST_INSERT_ID();
-
-/* ADD EXAMPLE SHIPPING COST */
-INSERT INTO shipping_cost (price, product_order_id) VALUES (4.99, @example_product_order_id_1);
-
-/* ADD EXAMPLE SHIPPING COST */
-INSERT INTO shipping_cost (price, product_order_id) VALUES (3.99, @example_product_order_id_2);
 
 /* ADD COMMAND RESERVATION BY CUSTOMER */
 INSERT INTO reserve (customer_id, command_id) VALUES (@example_customer_id_1, @example_command_id);

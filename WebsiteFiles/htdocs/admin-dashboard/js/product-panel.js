@@ -1,5 +1,5 @@
 //Render selected image on local image import
-const imageSelector = document.getElementById('image_selector');
+const imageSelector = document.getElementById("image_selector");
 imageSelector.onchange = (evt) => {
     const [file] = imageSelector.files;
     if (file) {
@@ -29,13 +29,13 @@ deleteButtons.forEach((deleteButton) => {
         formData.append("productid", productid);
 
         fetch("/admin-dashboard/post/product-post.php", {
-                method: "POST",
-                body: formData,
-            })
-            .then(function(response) {
+            method: "POST",
+            body: formData,
+        })
+            .then(function (response) {
                 return response.text();
             })
-            .then(function(body) {
+            .then(function (body) {
                 $(".modal_description").innerHTML = body;
                 $(".product_modal").classList.remove("closed");
                 $(".delete_product_btn").setAttribute("data-id", productid);
@@ -54,9 +54,9 @@ $(".delete_product_btn").addEventListener("click", (event) => {
     fetch("/admin-dashboard/post/product-post.php", {
         method: "POST",
         body: formData,
-    }).then(function(response) {
+    }).then(function (response) {
         $(".product_modal").classList.add("closed");
-        setTimeout(function() {
+        setTimeout(function () {
             location.reload();
         }, 200);
     });
@@ -75,13 +75,13 @@ editButtons.forEach((editButton) => {
         formData.append("productid", productid);
 
         fetch("/admin-dashboard/post/product-post.php", {
-                method: "POST",
-                body: formData,
-            })
-            .then(function(response) {
+            method: "POST",
+            body: formData,
+        })
+            .then(function (response) {
                 return response.text();
             })
-            .then(function(body) {
+            .then(function (body) {
                 $(".modal_content").innerHTML = body;
                 $(".product_modal").classList.remove("closed");
                 $(".modify_product_btn").setAttribute("data-id", productid);
@@ -117,9 +117,9 @@ $(".modify_product_btn").addEventListener("click", (event) => {
     fetch("/admin-dashboard/post/product-post.php", {
         method: "POST",
         body: formData,
-    }).then(function(response) {
+    }).then(function (response) {
         $(".product_modal").classList.add("closed");
-        setTimeout(function() {
+        setTimeout(function () {
             location.reload();
         }, 200);
     });

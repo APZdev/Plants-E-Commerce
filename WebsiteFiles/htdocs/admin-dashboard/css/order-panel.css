@@ -1,6 +1,10 @@
 .command_main_container {
     display: flex;
-    width: 75vw;
+    width: 70vw;
+}
+
+.command_details_container {
+    min-width: 550px;
 }
 
 .command_title {
@@ -104,13 +108,17 @@
     width: 100px;
 }
 
+.product_order_info_container {
+    margin-left: 2em;
+}
+
 .product_order_item {
     padding: 20px 0px;
     align-items: center;
     display: flex;
 }
 
-.product_command_name {
+.product_order_name {
     font-weight: 500;
     font-size: 0.9rem;
     text-decoration: underline;
@@ -119,6 +127,7 @@
 
 .quantity_title,
 .short_desc_title {
+    white-space: nowrap;
     margin-right: 8px;
 }
 

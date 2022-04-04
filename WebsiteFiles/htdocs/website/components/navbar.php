@@ -1,5 +1,5 @@
+<script type="module" src="/website/js/navbar.js" defer></script>
 <div class='navbar'>
-    <script src="/website/js/navbar.js" defer></script>
     <?php 
         function currentPage($getName){
             if(isset($_GET['page']))
@@ -21,7 +21,10 @@
     </div>
     <div class="icons-container">
         <i class="far fa-search"></i>
-        <i class="far fa-shopping-cart"></i>
+        <div class="shopping_cart_container">
+            <i class="shopping_cart_icon far fa-shopping-cart"></i>
+            <p class="shopping_cart_article_count"></p>
+        </div>
         <i class="authentication_modal_navbar_button far fa-user"></i>
         <div class="dark_mode_toggle_container">
             <input type="checkbox" class="checkbox" id="chk" />

@@ -18,17 +18,16 @@
                     
                     foreach($productOrders as $productOrder) {
                         $product = $customRequest->getData(
-                            "SELECT p.price_excl_tax, p.tax_id 
+                            "SELECT p.price_excl_tax, p.tax_id, p.shipping_cost
                              FROM product p
                              WHERE p.product_id = {$productOrder['product_id']} LIMIT 1")[0]; 
 
                         $taxRate = $db->con->query("SELECT rate FROM tax WHERE tax_id = {$product['tax_id']}")->fetch_object()->rate;
-                        $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_id']}")->fetch_object()->price;
 
                         $totalPriceExclTax += $productOrder['quantity'] * $product['price_excl_tax'];
                         $totalTaxCost += $productOrder['quantity'] * $product['price_excl_tax'] * ($taxRate / 100);
                         $totalPrice += $productOrder['quantity'] * $product['price_excl_tax'] * (1 + $taxRate / 100);
-                        $totalShippingCost += $shippingCost;
+                        $totalShippingCost += $product['shipping_cost'];
                         $formattedDate = date("F jS, Y", strtotime($command['created_at']));
                     }
 
@@ -65,17 +64,16 @@
                     
                     foreach($productOrders as $productOrder) {
                         $product = $customRequest->getData(
-                            "SELECT p.price_excl_tax, p.tax_id 
+                            "SELECT p.price_excl_tax, p.tax_id, p.shipping_cost
                              FROM product p
                              WHERE p.product_id = {$productOrder['product_id']} LIMIT 1")[0]; 
 
                         $taxRate = $db->con->query("SELECT rate FROM tax WHERE tax_id = {$product['tax_id']}")->fetch_object()->rate;
-                        $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_order_id']}")->fetch_object()->price;
 
                         $totalPriceExclTax += $productOrder['quantity'] * $product['price_excl_tax'];
                         $totalTaxCost += $productOrder['quantity'] * $product['price_excl_tax'] * ($taxRate / 100);
                         $totalPrice += $productOrder['quantity'] * $product['price_excl_tax'] * (1 + $taxRate / 100);
-                        $totalShippingCost += $shippingCost;
+                        $totalShippingCost += $product['shipping_cost'];
                         $formattedDate = date("F jS, Y", strtotime($command['created_at']));
                     }
 
@@ -154,18 +152,17 @@
                 <?php foreach($productOrders as $productOrder) {?>
                     <?php 
                         $product = $customRequest->getData(
-                            "SELECT name, short_description, price_excl_tax, tax_id, image_id
+                            "SELECT name, short_description, price_excl_tax, tax_id, image_id, shipping_cost
                                 FROM product
                                 WHERE product_id = {$productOrder['product_id']} LIMIT 1")[0]; 
         
                         $taxRate = $db->con->query("SELECT rate FROM tax WHERE tax_id = {$product['tax_id']}")->fetch_object()->rate;
-                        $shippingCost = $db->con->query("SELECT price FROM shipping_cost WHERE product_order_id = {$productOrder['product_order_id']}")->fetch_object()->price;
                         $productImage = $db->con->query("SELECT url FROM image WHERE image_id = {$product['image_id']}")->fetch_object()->url;
 
                         $totalPriceExclTax += $productOrder['quantity'] * $product['price_excl_tax'];
                         $totalTaxCost += $productOrder['quantity'] * $product['price_excl_tax'] * ($taxRate / 100);
                         $totalPrice += $productOrder['quantity'] * $product['price_excl_tax'] * (1 + $taxRate / 100);
-                        $totalShippingCost += $shippingCost;
+                        $totalShippingCost += $product['shipping_cost'];
                         $formattedDate = date("F jS, Y", strtotime($command['created_at']));
                     ?>
                     <div class="command_spacer"></div>
@@ -197,7 +194,7 @@
                         <p class="price_value"><?= $totalPriceExclTax ?> $</p>
                     </div>
                     <div class="delivery_cost_container">
-                        <p class="price_title">Delivery of the order</p>
+                        <p class="price_title">Delivery cost</p>
                         <p class="price_value"><?= $totalShippingCost ?> $</p>
                     </div>
                     <div class="tva_price_container">

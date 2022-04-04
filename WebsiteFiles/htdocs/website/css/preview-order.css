@@ -1,0 +1,405 @@
+.preview_order_main_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_design_container {
+    width: 100%;
+    display: flex;
+}
+
+.top_design_left_side,
+.top_design_right_side {
+    display: flex;
+    width: 50%;
+    height: 8px;
+    justify-content: flex-end;
+}
+
+.top_design_left_side {
+    background-color: #e6e6e6;
+}
+
+.top_left_design_bar {
+    height: 100%;
+    width: 60%;
+    background-color: #243a0b;
+    margin-right: 6rem;
+}
+
+.products_table_titles_container {
+    display: flex;
+    width: 100%;
+}
+
+.products_product_titles_container {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #e6e6e6;
+    padding: 7rem 0 3rem 0;
+    width: 50%;
+}
+
+.product_title {
+    width: 10%;
+    margin-right: 30%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8c8d8a;
+}
+
+.product_price_quantity_total_titles_container {
+    display: flex;
+    justify-content: center;
+    padding-top: 7rem;
+    width: 50%;
+}
+
+.product_price_quantity_total_titles_container_content {
+    display: flex;
+    width: 75%;
+    border-bottom: 1px solid #8c8d8a44;
+}
+
+.product_price_quantity_total_titles_container_content > p {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.product_price_quantity_total_titles_container_content .product_price_title {
+    font-size: 1.1rem;
+    margin-right: 33%;
+    font-weight: 600;
+    color: #8c8d8a;
+}
+
+.product_quantity_title {
+    font-size: 1.1rem;
+    margin-right: 30%;
+    font-weight: 600;
+    color: #8c8d8a;
+}
+
+.product_total_title {
+    padding-right: 9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8c8d8a;
+}
+
+.products_items_content_container {
+    width: 100%;
+}
+
+.product_item {
+    display: flex;
+    width: 100%;
+    height: 12rem;
+}
+
+.product_item_left_side {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #e6e6e6;
+    padding: 1em 0 1em 0;
+}
+
+.product_item_image {
+    width: 150px;
+    height: 150px;
+}
+
+.product_item_right_side {
+    width: 50%;
+}
+
+.product_item_name_stock_container {
+    width: 30%;
+    margin: 0 10% 0 8em;
+}
+
+.product_item_name {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.product_item_stock {
+    color: #8c8d8a;
+    font-size: 0.9rem;
+}
+
+.product_item_right_side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_item_right_side_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    height: 100%;
+    border-bottom: 1px solid #8c8d8a44;
+}
+
+.products_items_content_container
+    .product_item:last-child
+    .product_item_right_side_content {
+    border-bottom: 0px;
+}
+
+.product_item_unit_price {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.quantity_modifier_container {
+    display: flex;
+    padding-left: 4em;
+}
+
+.quantity_remove_button,
+.quantity_add_button {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.quantity_remove_button:hover,
+.quantity_add_button:hover {
+    cursor: pointer;
+}
+
+.product_item_quantity_input {
+    text-align: center;
+    width: 120px;
+    background-color: #00000000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.product_item_total_price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-left: 3em;
+}
+
+.product_delete_button {
+    font-size: 1.25rem;
+    transition: 0.2s;
+}
+
+.product_delete_button:hover {
+    color: red;
+    transform: scale(1.15);
+}
+
+.bottom_design_container {
+    width: 100%;
+    display: flex;
+}
+
+.before_footer_spacer {
+    display: flex;
+    height: 2rem;
+}
+
+.before_footer_spacer_left {
+    flex: 0.5;
+    background-color: #e6e6e6;
+    height: 100%;
+}
+
+.before_footer_spacer_right {
+    flex: 0.5;
+    height: 100%;
+}
+
+.bottom_design_left_side,
+.bottom_design_right_side {
+    display: flex;
+    width: 50%;
+    height: 8px;
+    justify-content: flex-start;
+}
+
+.bottom_design_container {
+    background-color: #b4ccae;
+}
+
+.bottom_left_design_bar {
+    height: 100%;
+    width: 40%;
+    background-color: #243a0b;
+    margin-left: 35%;
+}
+
+.subtotal_checkout_footer_container {
+    width: 100%;
+    background-color: #b4ccae;
+    height: 20rem;
+}
+
+.subtotal_checkout_footer_container {
+    padding: 4em;
+    display: flex;
+}
+
+.subtotal_back_button {
+    width: 50%;
+    align-self: flex-end;
+    font-size: 3rem;
+    color: #243a0b;
+}
+
+.subtotal_back_button:hover {
+    cursor: pointer;
+}
+
+.subtotal_price_container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.order_checkout_button:hover {
+    cursor: pointer;
+}
+
+.subtotal_title {
+    font-weight: 600;
+    margin-right: 2em;
+}
+
+.subtotal_value {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.subtotal_checkout_terms_container {
+    margin-left: 7em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.terms_and_conditions_container {
+    display: flex;
+    align-items: center;
+}
+
+.terms_and_condition_checkbox {
+    margin-right: 1em;
+}
+
+/* Customize the label (the container) */
+.terms_and_condition_checkbox_container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.terms_and_condition_checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.terms_and_condition_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #00000000;
+    border: 1px solid #fff;
+}
+
+/* On mouse-over, add a grey background color */
+.terms_and_condition_checkbox_container:hover
+    .terms_and_condition_checkbox
+    ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.terms_and_condition_checkbox_container
+    .terms_and_condition_checkbox:checked
+    ~ .terms_and_condition_checkmark {
+    background-color: #00000000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.terms_and_condition_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.terms_and_condition_checkbox_container
+    .terms_and_condition_checkbox:checked
+    ~ .terms_and_condition_checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.terms_and_condition_checkbox_container .terms_and_condition_checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.terms_agreement_text {
+    font-weight: 600;
+}
+
+.therms_and_condition_link {
+    color: #93a45d;
+}
+
+.therms_and_condition_link:hover {
+    color: #748149;
+}
+
+.order_checkout_button {
+    background-color: #243a0b;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+
+    width: 80%;
+    padding: 1.5em;
+}

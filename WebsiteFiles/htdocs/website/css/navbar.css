@@ -20,14 +20,13 @@ a:active {
     flex-wrap: nowrap;
 }
 
-.icons-container i {
+.icons-container > i {
     margin-left: 22px;
     font-size: 22px;
     color: #243a0b;
 }
 
 .icons-container i.dark {
-    margin-left: 22px;
     font-size: 22px;
     color: #d0c5a6;
 }
@@ -48,6 +47,35 @@ a:active {
 .icons-container .far:hover,
 .authentication_modal_navbar_button:hover {
     cursor: pointer;
+}
+
+.shopping_cart_container {
+    margin-left: 22px;
+    width: 22px;
+    height: 22px;
+    position: relative;
+}
+
+.shopping_cart_icon {
+    position: absolute;
+    font-size: 22px;
+    color: #243a0b;
+}
+
+.shopping_cart_article_count {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -5px 0 0 12px;
+    width: 17px;
+    height: 17px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    border-radius: 50%;
+    background-color: #589440;
+    color: #ffffff;
+    z-index: 4;
 }
 
 .page-btn.selected {

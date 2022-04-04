@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/x-icon" href="./graphics/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/website/graphics/img/favicon.ico">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -14,13 +14,18 @@
         <link rel="stylesheet" href="../css/global.css">
         <link rel="stylesheet" href="../css/navbar.css">
         <link rel="stylesheet" href="../css/authentication-modal.css">
+        <link rel="stylesheet" href="../css/shopping-cart-modal.css">
         <link rel="stylesheet" href="../css/selected-product.css">
         <link rel="stylesheet" href="../css/footer.css">
+
+        <script type="module" src="../js/utilities.js" defer></script>
+        <script type="module" src="../js/selected-product.js" defer></script>
     </head>
     <body>
         <header>
             <?php include '../components/navbar.php'; ?>
             <?php include '../components/authentication-modal.php'; ?>
+            <?php include '../components/shopping-cart-modal.php'; ?>
         </header>
         <main>
             <?php
@@ -43,7 +48,7 @@
                     <p class="product_description"><?= $productInfo['short_description'] ?></p>
                     <p class="price_title">Price</p>
                     <p class="price_value"><?= ($productInfo['price_excl_tax'] + ($productInfo['price_excl_tax'] * $productInfo['tax_rate'] / 100)) ?> $</p>
-                    <div class="add_to_cart_button">Add to Cart</div>
+                    <div class="add_to_cart_button" data-id="<?= $_GET['product_id'] ?>">Add to Cart</div>
                 </div>
                 <div class="design_image_container">
                     <img src="<?= $productInfo['image_url'] ?>" alt="product_image" class="product_image">

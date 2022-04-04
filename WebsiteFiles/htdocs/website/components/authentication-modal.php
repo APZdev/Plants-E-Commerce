@@ -31,9 +31,9 @@
                 <div class="form_login_field_container">
                     <form class="login_form_container" action="/website/post/authentication.php" method="post">
                         <p class="email_title">Email</p>
-                        <input class="email_input" type="text" name="email" value="" placeholder="Email">
+                        <input class="email_input" autocomplete="email" type="text" name="email" value="" placeholder="Email">
                         <p class="password_title">Password</p>
-                        <input class="password_input" type="password" name="password" placeholder="Password">
+                        <input class="password_input" autocomplete="current-password" type="password" name="password" placeholder="Password">
                         <?php 
                             if(isset($_GET['message']) && !empty($_GET['message']))
                                 echo '<h3 class="error-message">' . htmlspecialchars($_GET['message']) . '</h3>';
@@ -67,11 +67,11 @@
                             </div>
                         </div>
                         <p class="email_title">Email</p>
-                        <input class="email_input" type="text" name="email" value="" placeholder="Email">
+                        <input class="email_input" autocomplete="email" type="text" name="email" value="" placeholder="Email">
                         <p class="password_title">Password</p>
-                        <input class="password_input" type="password" name="password" placeholder="Password">
+                        <input class="password_input" autocomplete="current-password" type="password" name="password" placeholder="Password">
                         <p class="password_title">Confirm Password</p>
-                        <input class="confirmpassword_input" type="password" name="confirm-password"
+                        <input class="confirmpassword_input" autocomplete="new-password" type="password" name="confirm-password"
                         placeholder="Confirm Password">
                         <?php 
                             if(isset($_GET['authentication']) && $_GET['authentication'] == "register" && isset($_GET['error']))

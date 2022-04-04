@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/authentication-modal.css">
+    <link rel="stylesheet" href="./css/shopping-cart-modal.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" href="./css/footer.css">
+
 
     <script src="./js/index.js" defer></script>
 </head>
@@ -26,6 +28,7 @@
     <header>
         <?php include './components/navbar.php'; ?>
         <?php include './components/authentication-modal.php'; ?>
+        <?php include './components/shopping-cart-modal.php'; ?>
     </header>
     <main>
         <?php

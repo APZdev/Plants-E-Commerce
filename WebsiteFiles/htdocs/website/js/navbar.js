@@ -1,22 +1,28 @@
-import {
-    calculateItemsAmountInShoppingCart,
-    updateNavbarCart,
-} from "./utilities.js";
+import { updateNavbarCart } from "./utilities.js";
 
-//Dark mode switch
-const chk = document.getElementById("chk");
-chk.addEventListener("change", () => {
-    const allDomElements = document.querySelectorAll("*");
-    allDomElements.forEach((element) => {
-        element.classList.toggle("dark");
-    });
+window.addEventListener("load", function () {
+    setTimeout(() => {
+        const chk = document.getElementById("chk");
+
+        //Dark mode switch
+        chk.addEventListener("change", (event) => {
+            localStorage.setItem("isThemeDark", `${chk.checked}`);
+            websiteDarkMode(chk.checked);
+        });
+
+        let isThemeDark = localStorage.getItem("isThemeDark");
+        if (isThemeDark != null) {
+            chk.checked = isThemeDark === "true";
+            websiteDarkMode(isThemeDark === "true");
+        }
+
+        function websiteDarkMode(state) {
+            const allDomElements = document.querySelectorAll("*");
+            allDomElements.forEach((element) => {
+                element.classList.toggle("dark", state);
+            });
+        }
+
+        updateNavbarCart();
+    }, 200);
 });
-
-function updateNavbarCartCount() {
-    let cartProducts = [];
-    if (localStorage.getItem("cart_articles") != null) {
-        cartProducts = JSON.parse(localStorage.getItem("cart_articles"));
-    }
-    updateNavbarCart(calculateItemsAmountInShoppingCart(cartProducts));
-}
-updateNavbarCartCount();

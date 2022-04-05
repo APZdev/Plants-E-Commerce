@@ -147,13 +147,12 @@
     border-bottom: 1px solid #8c8d8a44;
 }
 
-.products_items_content_container
-    .product_item:last-child
-    .product_item_right_side_content {
+.products_items_content_container .product_item:last-child .product_item_right_side_content {
     border-bottom: 0px;
 }
 
 .product_item_unit_price {
+    white-space: nowrap;
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -167,6 +166,13 @@
 .quantity_add_button {
     font-size: 2rem;
     font-weight: 300;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .quantity_remove_button:hover,
@@ -192,6 +198,7 @@ input[type="number"] {
 }
 
 .product_item_total_price {
+    white-space: nowrap;
     font-size: 1.1rem;
     font-weight: 600;
     padding-left: 3em;
@@ -204,6 +211,7 @@ input[type="number"] {
 
 .product_delete_button:hover {
     color: red;
+    cursor: pointer;
     transform: scale(1.15);
 }
 
@@ -214,7 +222,7 @@ input[type="number"] {
 
 .before_footer_spacer {
     display: flex;
-    height: 2rem;
+    min-height: 2rem;
 }
 
 .before_footer_spacer_left {
@@ -251,10 +259,7 @@ input[type="number"] {
     width: 100%;
     background-color: #b4ccae;
     height: 20rem;
-}
-
-.subtotal_checkout_footer_container {
-    padding: 4em;
+    padding: 3em 4em;
     display: flex;
 }
 
@@ -270,7 +275,27 @@ input[type="number"] {
 }
 
 .subtotal_price_container {
+    width: 90%;
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.shipping_price_container {
+    margin-top: -0.5em;
+    display: flex;
+    width: 90%;
+
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.total_price_container {
+    margin-top: -0.5em;
+    display: flex;
+    width: 91%;
+
+    justify-content: space-between;
     align-items: flex-end;
 }
 
@@ -280,11 +305,32 @@ input[type="number"] {
 
 .subtotal_title {
     font-weight: 600;
-    margin-right: 2em;
+}
+
+.shipping_title {
+    font-weight: 600;
+}
+
+.total_title {
+    font-weight: 600;
+    font-size: 1.75rem;
 }
 
 .subtotal_value {
+    white-space: nowrap;
     font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.shipping_value {
+    white-space: nowrap;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.total_value {
+    white-space: nowrap;
+    font-size: 1.75rem;
     font-weight: 600;
 }
 
@@ -340,16 +386,12 @@ input[type="number"] {
 }
 
 /* On mouse-over, add a grey background color */
-.terms_and_condition_checkbox_container:hover
-    .terms_and_condition_checkbox
-    ~ .checkmark {
+.terms_and_condition_checkbox_container:hover .terms_and_condition_checkbox ~ .checkmark {
     background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.terms_and_condition_checkbox_container
-    .terms_and_condition_checkbox:checked
-    ~ .terms_and_condition_checkmark {
+.terms_and_condition_checkbox_container .terms_and_condition_checkbox:checked ~ .terms_and_condition_checkmark {
     background-color: #00000000;
 }
 
@@ -361,9 +403,7 @@ input[type="number"] {
 }
 
 /* Show the checkmark when checked */
-.terms_and_condition_checkbox_container
-    .terms_and_condition_checkbox:checked
-    ~ .terms_and_condition_checkmark:after {
+.terms_and_condition_checkbox_container .terms_and_condition_checkbox:checked ~ .terms_and_condition_checkmark:after {
     display: block;
 }
 
@@ -381,15 +421,18 @@ input[type="number"] {
 }
 
 .terms_agreement_text {
+    white-space: nowrap;
     font-weight: 600;
 }
 
 .therms_and_condition_link {
     color: #93a45d;
+    white-space: nowrap;
 }
 
 .therms_and_condition_link:hover {
     color: #748149;
+    cursor: pointer;
 }
 
 .order_checkout_button {

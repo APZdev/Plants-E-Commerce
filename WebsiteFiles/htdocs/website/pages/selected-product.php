@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="../css/selected-product.css">
         <link rel="stylesheet" href="../css/footer.css">
 
-        <script type="module" src="../js/utilities.js" defer></script>
-        <script type="module" src="../js/selected-product.js" defer></script>
+        <script type="module" src="../js/utilities.js"></script>
+        <script type="module" src="../js/selected-product.js"></script>
     </head>
     <body>
         <header>

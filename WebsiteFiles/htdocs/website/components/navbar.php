@@ -1,4 +1,4 @@
-<script type="module" src="/website/js/navbar.js" defer></script>
+<script type="module" src="/website/js/navbar.js"></script>
 <div class='navbar'>
     <?php 
         function currentPage($getName){
@@ -20,7 +20,6 @@
         <a class="page-btn <?php currentPage("contact-us"); ?>" href="/website/index.php?page=contact-us">Contact Us</a>
     </div>
     <div class="icons-container">
-        <i class="far fa-search"></i>
         <div class="shopping_cart_container">
             <i class="shopping_cart_icon far fa-shopping-cart"></i>
             <p class="shopping_cart_article_count"></p>

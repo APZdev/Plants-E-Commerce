@@ -1,13 +1,11 @@
 .authentication_modal_container {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(4px);
-    position: fixed;
     width: 100vw;
     height: 100vh;
+    z-index: 10;
     transition: opacity 0.25s, backdrop-filter 0.25s;
 }
 
@@ -15,6 +13,19 @@
     opacity: 0;
     backdrop-filter: blur(0px);
     pointer-events: none;
+}
+
+.authentication_modal_background {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    width: 100vw;
+    height: 100vh;
+}
+
+.authentication_modal_main_content_container {
+    z-index: 10;
+    position: absolute;
 }
 
 .authentication_modal_content_container {

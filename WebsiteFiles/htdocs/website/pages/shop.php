@@ -1,5 +1,5 @@
 <div class="shop_main_container">
-    <script src="./js/shop.js" defer></script>
+    <script src="./js/shop.js"></script>
     <div class="design_section_container">
         <div class="title_button_container">
             <p class="graphics_title">Take Care Of The Trees & They Will Take Care Of You.</p>
@@ -29,8 +29,8 @@
                 </div>
                 <div class="double-range-slider-container">
                     <div class="slider-track"></div>
-                    <input type="range" min="0" max="100" value="0" id="slider-1" oninput="slideOne()">
-                    <input type="range" min="0" max="100" value="100" id="slider-2" oninput="slideTwo()">
+                    <input type="range" min="0" max="100" value="0" id="slider-1">
+                    <input type="range" min="0" max="100" value="100" id="slider-2">
                 </div>
             </div>
         </div>

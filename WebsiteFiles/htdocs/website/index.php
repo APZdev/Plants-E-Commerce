@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./css/footer.css">
 
 
-    <script src="./js/index.js" defer></script>
+    <script src="./js/index.js"></script>
 </head>
 
 <body>

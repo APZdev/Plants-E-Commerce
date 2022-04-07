@@ -1,4 +1,10 @@
 <?php 
+    require(__DIR__."/database/DBController.php");
+    $db = new DBController();
+
+    require(__DIR__."/database/CustomRequest.php");
+    $customRequest = new CustomRequest($db);
+    
     function debug_to_console($data) {
         $output = $data;
         if (is_array($output))
@@ -36,9 +42,39 @@
             return "/admin-dashboard/graphics/img/cb-logo.png";
     }
 
-    require(__DIR__."/database/DBController.php");
-    $db = new DBController();
+    function is_session_started()
+    {
+        if ( php_sapi_name() !== 'cli' ) {
+            if ( version_compare(phpversion(), '5.4.0', '>=') ) {
+                return session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;
+            } else {
+                return session_id() === '' ? FALSE : TRUE;
+            }
+        }
+        return FALSE;
+    }
 
-    require(__DIR__."/database/CustomRequest.php");
-    $customRequest = new CustomRequest($db);
+    function sendActivityLog($db, $activityMessage)
+    {
+        $query = "";
+        if(is_session_started())
+        {
+            if(isset($_SESSION['email']))
+            {
+                $customerId = $db->con->query("SELECT customer_id FROM customer WHERE email = '{$_SESSION['email']}';")->fetch_object()->cutomer_id;
+            }
+    
+            $query = 
+                "INSERT INTO activity_log (action, created_at, customer_id) 
+                VALUES ('{$activityMessage}', NOW(), $customerId";
+        }
+        else
+        {
+            $query = 
+                "INSERT INTO activity_log (action, created_at, customer_id) 
+                VALUES ('{$activityMessage}', NOW(), 1)";
+        }
+    
+        $db->con->query($query);
+    }
 ?>

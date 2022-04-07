@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
     //but idk why this bug happens since it's SSR and i use defer script loading
     setTimeout(() => {
         //Open shopping cart modal on click
-        document.querySelector(".shopping_cart_container").addEventListener("click", (event) => {
+        document.querySelector(".shopping_cart_container").addEventListener("mouseenter", (event) => {
             let cartProducts = [];
             if (localStorage.getItem("cart_articles") != null) {
                 cartProducts = JSON.parse(localStorage.getItem("cart_articles"));
@@ -38,6 +38,11 @@ window.addEventListener("load", function () {
                         window.location = window.location.origin + "/website/pages/preview-order.php";
                     });
                 });
+        });
+
+        //Close modal if mouse leave the modal
+        document.querySelector(".shopping_cart_modal_container_content_body").addEventListener("mouseleave", (event) => {
+            document.querySelector(".shopping_cart_modal_container").classList.add("closed");
         });
 
         //Close shopping cart modal

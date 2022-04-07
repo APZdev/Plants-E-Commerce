@@ -5,6 +5,7 @@
     background-color: rgba(88, 133, 53, 0.1);
     padding: 40px;
     border-radius: 12px;
+    width: 70vw;
 }
 
 .user_title {
@@ -12,4 +13,83 @@
     margin-bottom: 25px;
     font-weight: 500;
     color: #588535;
+}
+
+.user_table_content {
+    border-collapse: separate;
+    border-spacing: 0px 2em;
+}
+
+.user_table_head {
+    background-color: rgba(88, 133, 53, 0.2);
+    font-size: 1.2rem;
+}
+
+.user_head_item {
+    padding: 0.75em 0 0.75em 2em;
+}
+
+.user_table_content .user_head_item:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.user_table_content .user_head_item:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.user_body_item_info {
+    padding: 0.75em 0 0.75em 2em;
+    border: 2px solid rgba(88, 133, 53, 0.2);
+    border-right: 40px;
+    border-left: 40px;
+    font-weight: 600;
+    color: rgb(87, 87, 87);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.user_body_item:hover .user_body_item_info {
+    color: #fff;
+    background-color: #588535;
+    border: 0px solid #588535 !important;
+    box-shadow: 0px 10px 3em #58853555;
+}
+
+.user_body_item {
+    transition: transform 0.2s;
+}
+
+.user_body_item:hover {
+    transform: scale(1.05);
+}
+
+.user_body_item .user_body_item_info:last-child {
+    border-right: 2px solid rgba(88, 133, 53, 0.2);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.user_body_item .user_body_item_info:first-child {
+    border-left: 2px solid rgba(88, 133, 53, 0.2);
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+.user_management_button {
+    padding: 0.75em;
+    border-radius: 0.75em;
+    color: #588535;
+    background-color: rgba(88, 133, 53, 0.2);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.user_body_item:hover .user_management_button {
+    background-color: #699943;
+    color: #fff;
+}
+
+.user_body_item:hover .user_management_button:hover {
+    background-color: #76aa4c;
+    color: #fff;
 }

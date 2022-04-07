@@ -1,3 +1,4 @@
+<?php sendActivityLog($db, "Visit : Shop Page"); ?>
 <div class="shop_main_container">
     <script src="./js/shop.js"></script>
     <div class="design_section_container">
@@ -46,20 +47,7 @@
                 <p class="showing_results">Showing 1-12 of 26 results</p>
             </div>
             <div class="products_grid_container">
-                <?php
-                $products = $customRequest->getData(
-                    "SELECT p.product_id, p.name, p.price_excl_tax, t.rate AS tax_rate, i.url AS image_url
-                    FROM product p 
-                    LEFT JOIN (tax t CROSS JOIN image i) ON (p.tax_id = t.tax_id AND p.image_id = i.image_id);
-                    ");
-                ?>
-                <?php foreach($products as $product) { ?>
-                    <a href="/website/pages/selected-product.php?product_id=<?= $product['product_id'] ?>" class="product_card_item">
-                        <img class="product_card_image"src="<?= $product['image_url'] ?>" alt="product_image">
-                        <p class="product_card_name"><?= $product['name'] ?></p>
-                        <p class="product_card_price"><?= ($product['price_excl_tax'] + ($product['price_excl_tax'] * $product['tax_rate'] / 100)) ?> $</p>
-                    </a>
-                <?php } ?>
+                <!-- Ajax request in shop.js -->
             </div>
         </div>
     </div>

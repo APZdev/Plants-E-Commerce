@@ -1,5 +1,5 @@
 <?php require_once('../../utilities.php'); ?>
-    
+<?php sendActivityLog($db, "Visit : Preview Order Page"); ?>
 <html>
     <head>
         <meta charset="UTF-8">

@@ -1,3 +1,4 @@
+<?php sendActivityLog($db, "Visit : Home Page"); ?>
 <div class="home_main_container">
     <div class="main_container_presentation">
         <div class="main_container_main_content">

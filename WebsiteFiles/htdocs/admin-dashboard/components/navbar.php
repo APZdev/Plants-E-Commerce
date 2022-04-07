@@ -37,7 +37,7 @@
                 <h2 class="navbar_item_title">Threads</h2>
             </div>
         </a>
-        <a href="/admin-dashboard/dashboard.php?page=activity-panel">
+        <a href="/admin-dashboard/dashboard.php?page=activity-panel&type=list">
             <div class="navbar_item <?php isNavbarButtonSelected("activity-panel"); ?>">
                 <i class="navbar_item_image far fa-analytics"></i>
                 <h2 class="navbar_item_title">Activity</h2>

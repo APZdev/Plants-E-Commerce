@@ -128,10 +128,9 @@ window.addEventListener("load", function () {
         document.querySelector(`.shipping_value`).innerHTML = `$ ${shippingTotalPrice.toFixed(2)}`;
         document.querySelector(`.total_value`).innerHTML = `$ ${(subtotalPrice + shippingTotalPrice).toFixed(2)}`;
 
-        if (document.querySelector(".products_items_content_container").childElementCount < 2) {
-            const footerDesignSpace = document.querySelector(".before_footer_spacer");
-            footerDesignSpace.style.height = "10em";
-        }
+        const footerDesignSpace = document.querySelector(".before_footer_spacer");
+        if (document.querySelector(".products_items_content_container").childElementCount < 1) footerDesignSpace.style.height = "22em";
+        else if (document.querySelector(".products_items_content_container").childElementCount < 2) footerDesignSpace.style.height = "10em";
     }
 
     loadShoppingCartData();

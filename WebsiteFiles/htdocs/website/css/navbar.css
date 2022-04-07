@@ -15,6 +15,7 @@ a:active {
 }
 
 .icons-container {
+    height: 100%;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -50,9 +51,12 @@ a:active {
 }
 
 .shopping_cart_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 22px;
     width: 22px;
-    height: 22px;
+    height: 100%;
     position: relative;
 }
 

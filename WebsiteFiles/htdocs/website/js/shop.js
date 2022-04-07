@@ -8,7 +8,7 @@ window.addEventListener("load", function () {
     let sliderMaxValue = sliderOne.max;
 
     document.querySelector(".shop_now_button").addEventListener("click", (event) => {
-        $(".filters_sidebar_container").scrollIntoView({
+        document.querySelector(".filters_sidebar_container").scrollIntoView({
             behavior: "smooth",
         });
     });
@@ -47,4 +47,38 @@ window.addEventListener("load", function () {
 
     slideOne();
     slideTwo();
+
+    function searchProductWithKeyword(keywordsString) {
+        let keywords = keywordsString.split(" ");
+        let finalKeywords = "";
+
+        for (let i = 0; i < keywords.length; i++) {
+            if (i != keywords.length - 1) finalKeywords += keywords[i] + ":";
+            else finalKeywords += keywords[i];
+        }
+
+        let formData = new FormData();
+        formData.append("shop_filtered_product_fetch", "1");
+        formData.append("keywords", finalKeywords);
+
+        fetch("/website/post/shop-post.php", {
+            method: "POST",
+            body: formData,
+        })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (body) {
+                //Fill modal content with server response
+                console.log("here");
+                document.querySelector(".products_grid_container").innerHTML = body;
+            });
+    }
+
+    searchProductWithKeyword("");
+
+    let keywordSearchBar = document.querySelector(".sort_search_bar");
+    keywordSearchBar.addEventListener("change", (event) => {
+        searchProductWithKeyword(keywordSearchBar.value);
+    });
 });

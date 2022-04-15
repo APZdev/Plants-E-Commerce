@@ -62,6 +62,7 @@
 
 .user_body_item:hover {
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 .user_body_item .user_body_item_info:last-child {
@@ -92,4 +93,162 @@
 .user_body_item:hover .user_management_button:hover {
     background-color: #76aa4c;
     color: #fff;
+}
+
+.selected_user_global_content_container {
+    display: flex;
+}
+
+.select_user_general_info_content_container {
+    margin-bottom: 1.5rem;
+}
+
+.selected_user_content_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 5rem;
+}
+
+.selected_user_name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #588535;
+    margin-bottom: 0.5rem;
+}
+
+.selected_user_category_title {
+    margin-bottom: 0.5rem;
+
+    color: #588535;
+    font-weight: 600;
+}
+
+.selected_user_left_content_container {
+    display: flex;
+    flex: 1;
+}
+
+.selected_user_image {
+    width: 300px;
+    height: 300px;
+    opacity: 0.7;
+}
+
+.selected_user_design_spacer {
+    display: flex;
+    align-items: center;
+}
+
+.selected_user_spacer_title {
+    color: rgba(88, 133, 53, 0.9);
+    white-space: nowrap;
+}
+
+.selected_user_spacer_line {
+    margin-left: 1em;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(88, 133, 53, 0.7);
+}
+
+.selected_user_left_category_container {
+    margin-top: 1.5em;
+}
+
+.selected_user_title_verified_container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.selected_user_left_slug {
+    margin-left: 1.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.2rem;
+    font-weight: 600;
+}
+
+.slug_verified {
+    background: rgba(118, 180, 71, 0.3);
+    color: #588535;
+}
+
+.slug_not_verified {
+    background: rgba(255, 0, 0, 0.3);
+    color: #ff000099;
+}
+
+.selected_user_left_title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #588535;
+}
+
+.selected_user_left_info {
+    margin-bottom: 0.5rem;
+    color: #757575;
+    font-weight: 400;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.selected_user_send_email_icon {
+    color: #588535;
+    font-size: 1.1rem;
+}
+
+.selected_user_send_email_button {
+    margin-top: 1rem;
+    display: flex;
+    background-color: rgba(118, 180, 71, 0.3);
+    padding: 0.8rem 1rem;
+    border-radius: 0.2rem;
+    width: fit-content;
+}
+
+.selected_user_send_email_button:hover {
+    cursor: pointer;
+}
+
+.selected_user_send_email_title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    color: #588535;
+}
+
+.selected_user_ban_user_button_container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+}
+
+.selected_user_ban_user_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff000033;
+    color: red;
+
+    padding: 0.8rem 1rem;
+    border-radius: 0.2rem;
+    transition: transform 0.2s;
+}
+
+.selected_user_ban_user_button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.selected_user_ban_icon {
+    margin-right: 0.5rem;
+    color: red;
+}
+
+.selected_user_ban_user_title {
+    color: red;
+    font-weight: 600;
 }

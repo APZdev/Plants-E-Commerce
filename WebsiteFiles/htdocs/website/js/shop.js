@@ -70,15 +70,15 @@ window.addEventListener("load", function () {
             })
             .then(function (body) {
                 //Fill modal content with server response
-                console.log("here");
                 document.querySelector(".products_grid_container").innerHTML = body;
             });
     }
 
+    //Search to display products on the page
     searchProductWithKeyword("");
 
     let keywordSearchBar = document.querySelector(".sort_search_bar");
-    keywordSearchBar.addEventListener("change", (event) => {
+    keywordSearchBar.addEventListener("input", (event) => {
         searchProductWithKeyword(keywordSearchBar.value);
     });
 });

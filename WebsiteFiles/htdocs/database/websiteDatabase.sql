@@ -220,7 +220,7 @@ INSERT INTO customer (firstname, lastname, email, password, vkey, verified, regi
 SET @example_customer_id_1 = LAST_INSERT_ID();
 
 INSERT INTO customer (firstname, lastname, email, password, vkey, verified, registration_date, update_date) 
-   VALUES ('Tom', 'Virard', 'axtom77@hotmail.fr', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', '0192023a7bbd73250516f069df18b500', 1, NOW(), NOW());
+   VALUES ('Tom', 'Virard', 'axtom77@hotmail.fr', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', '0192023a7bbd73250516f069df18b500', 0, NOW(), NOW());
 SET @example_customer_id_2 = LAST_INSERT_ID();
 
 /* SETUP MULTIPLE EXAMPLE EVENTS (Without image) */
@@ -286,7 +286,7 @@ INSERT INTO judge (product_id, user_comment_id) VALUES (@example_product_id_1, @
 
 /* ADD EXAMPLE FACTURATION_ADDRESS */
 INSERT INTO facturation_address (firstname, lastname, city, street, zip_code, email, more_info, phone_number) 
-   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'difallahadam2003@gmail.com','Building 7, 4th Floor, Door/Box 99', '+33 7 49 02 26 39');
+   VALUES ('Adam', 'Pomposelli', 'LONDON', '26 New Street', 'W10 9MQ', 'difallahadam2003@gmail.com','Building 7, 4th Floor, Door/Box 99', '+33 7 49 02 26 39');
 SET @example_facturation_address = LAST_INSERT_ID();
 
 /* ADD EXAMPLE COMMAND */
@@ -295,7 +295,7 @@ SET @example_command_id = LAST_INSERT_ID();
 
 /* ADD EXAMPLE CUSTOMER_ADDRESS */
 INSERT INTO delivery_address (firstname, lastname, city, street, zip_code, more_info, phone_number, customer_id) 
-   VALUES ('FirstName', 'LastName', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', "+33 7 49 02 26 39", @example_customer_id_1);
+   VALUES ('Adam', 'Pomposelli', 'LONDON', '26 New Street', 'W10 9MQ', 'Building 7, 4th Floor, Door/Box 99', "+33 7 49 02 26 39", @example_customer_id_1);
 SET @example_customer_address = LAST_INSERT_ID();
 
 /* ADD EXAMPLE DELIVERY */

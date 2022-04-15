@@ -1,12 +1,5 @@
 <div class="activity_main_container">
     <?php 
-        $logs = $customRequest->getData(
-            "SELECT c.firstname, c.lastname, c.email, a.action, a.created_at AS timestamp
-             FROM activity_log a
-             LEFT JOIN (customer c) ON (c.customer_id = a.customer_id)
-             ORDER BY a.created_at DESC
-            ");
-            
         function isTypeButtonSelected($getName)
         {
             echo $_GET['type'] == $getName ? "selected" : "";
@@ -17,6 +10,15 @@
         <a href="http://localhost/admin-dashboard/dashboard.php?page=activity-panel&type=graph"  class="<?php isTypeButtonSelected("graph"); ?> activity_navbar_title">Graph</a>
     </div>
     <?php if($_GET['type'] == "list") {?>
+        <?php 
+            $logs = $customRequest->getData(
+                "SELECT c.firstname, c.lastname, c.email, a.action, a.created_at AS timestamp
+                FROM activity_log a
+                LEFT JOIN (customer c) ON (c.customer_id = a.customer_id)
+                ORDER BY a.created_at DESC
+                LIMIT 100
+                ");
+        ?>
         <p class="activity_title">Activity : List</p>
         <?php setTabTitle("Activity : List"); ?>
         <table class="activity_table_content">
@@ -40,6 +42,14 @@
             </tbody>
         </table>
     <?php } else if($_GET['type'] == "graph") { ?>
+        <?php 
+            $logs = $customRequest->getData(
+                "SELECT c.firstname, c.lastname, c.email, a.action, a.created_at AS timestamp
+                FROM activity_log a
+                LEFT JOIN (customer c) ON (c.customer_id = a.customer_id)
+                ORDER BY a.created_at DESC
+                ");
+        ?>
         <div class="graph_section_container">
             <script src="/admin-dashboard/js/activity-graph.js" defer></script>
             <p class="activity_title">Activity : Graph</p>

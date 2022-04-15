@@ -69,7 +69,7 @@ for (let k = 1; k <= 5; k++) {
         //Draw line from previous corner to the new calculated corner
         ctx.lineTo(coordX, coordY);
 
-        //Draw text only around the biggest ring
+        //Execute only around the largest ring
         if (k == 5) {
             //Draw lines from corner to center
             ctx.lineTo(Xcenter, Ycenter);
@@ -92,6 +92,19 @@ for (let k = 1; k <= 5; k++) {
 ctx.strokeStyle = "#588535";
 ctx.lineWidth = 1.5;
 ctx.stroke();
+
+//Get max percentage to calculate relative percentages
+let maxRatio = Math.max.apply(
+    Math,
+    percentages.map(function (o) {
+        return o.ratio;
+    })
+);
+
+//Simple cross product to get the relative percentages
+for (let i = 0; i < percentages.length; i++) {
+    percentages[i].ratio = percentages[i].ratio / maxRatio;
+}
 
 //Draw colored data area
 ctx.beginPath();

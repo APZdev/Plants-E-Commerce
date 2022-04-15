@@ -1,5 +1,11 @@
 <div class="navbar-container">
-    <img class="navbar-logo" width="90px" height="90px" src="/website/graphics/img/logo.png" alt="logo">
+    <div class="navbar_logo_title_container">
+        <img class="navbar-logo" width="90px" height="90px" src="/website/graphics/img/logo.png" alt="logo">
+        <div class="navbar_title_container">
+            <p class="navbar_title_name">Tropical Interior</p>
+            <p class="navbar_subtitle">Dashboard</p>
+        </div>
+    </div>
     <div class="navbar_item_container">
         <?php 
             function isNavbarButtonSelected($getName)
